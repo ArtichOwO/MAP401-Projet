@@ -11,4 +11,6 @@ typedef struct Point_
     double x, y; /* Coordonnées */
 } Point;
 
+Vecteur vect_bipoint(Point A, Point B);
+
 #endif
