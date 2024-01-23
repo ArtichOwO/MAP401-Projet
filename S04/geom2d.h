@@ -21,6 +21,6 @@ Point produit_reel_vecteur(Vecteur V, double l);
 
 Vecteur vect_bipoint(Point A, Point B);
 
-double prod_scalaire(Vecteur A, Vecteur B);
+double produit_scalaire(Vecteur A, Vecteur B);
 
 #endif
