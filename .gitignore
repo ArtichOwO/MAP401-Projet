@@ -3,6 +3,8 @@
 
 IMAGES_TEST/
 
+test_image
+
 # Prerequisites
 *.d
 
