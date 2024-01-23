@@ -22,6 +22,6 @@ Vecteur vect_bipoint(Point A, Point B) {
 	return v;
 }
 
-double prod_scalaire(Vecteur A, Vecteur B) {
+double produit_scalaire(Vecteur A, Vecteur B) {
 	return A.x*B.x + A.y*B.y;
 }

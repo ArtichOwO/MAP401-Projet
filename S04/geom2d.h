@@ -17,6 +17,6 @@ Point add_point(Point P1, Point P2);
 
 Vecteur vect_bipoint(Point A, Point B);
 
-double prod_scalaire(Vecteur A, Vecteur B);
+double produit_scalaire(Vecteur A, Vecteur B);
 
 #endif
