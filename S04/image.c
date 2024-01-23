@@ -256,12 +256,14 @@ void ecrire_image(Image I)
 /* la fonction renvoie l'image "negatif" de I */
 Image negatif_image(Image I)
 {
+	Image In = I; 
 	UINT i;
-	UINT H = I.la_hauteur_de_l_image;
-	UINT L = I.la_largeur_de_l_image;
+	UINT H = hauteur_image(In);
+	UINT L = largeur_image(In);
 
 	for (i = 0; i < L * H; i++)
-	{
-		I.pointeur_vers_le_tableau_de_pixels[i] = !I.pointeur_vers_le_tableau_de_pixels[i];
-	}
+		set_pixel_image(In, i%L, i/L, 
+			get_pixel_image(In, i%L, i/L) == BLANC ? NOIR : BLANC);
+
+	return In;
 }
