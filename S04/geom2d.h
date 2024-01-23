@@ -11,4 +11,8 @@ typedef struct Point_
     double x, y; /* Coordonnées */
 } Point;
 
+Point set_point(double x, double y);
+
+Point add_point(Point P1, Point P2);
+
 #endif
