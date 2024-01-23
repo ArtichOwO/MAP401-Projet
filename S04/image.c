@@ -232,7 +232,24 @@ Image lire_fichier_image(char *nom_f)
 void ecrire_image(Image I)
 {
 	UINT i;
-	U
+	UINT H = I.la_hauteur_de_l_image;
+	UINT L = I.la_largeur_de_l_image;
+
+	for (i = 0; i < L * H; i++)
+	{
+		if (i%L == 0)
+		{
+			printf("\n");
+		}
+		if (I.pointeur_vers_le_tableau_de_pixels[i] == 0)
+		{
+			printf("#");
+		}
+		else
+		{
+			printf(".");
+		}
+	}
 }
 
 /* calculer l'image "négatif" de l'image I */
