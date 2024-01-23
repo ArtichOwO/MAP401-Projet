@@ -19,4 +19,7 @@ Vecteur vect_bipoint(Point A, Point B);
 
 double produit_scalaire(Vecteur A, Vecteur B);
 
+double point_norme(Point P1, Point P2);
+double vect_norme(Vecteur V);
+
 #endif

@@ -25,3 +25,11 @@ Vecteur vect_bipoint(Point A, Point B) {
 double produit_scalaire(Vecteur A, Vecteur B) {
 	return A.x*B.x + A.y*B.y;
 }
+
+double point_norme(Point P1, Point P2) {
+	return sqrt(pow(P2.x - P1.x, 2) + pow(P2.y - P1.y, 2));
+}
+
+double vect_norme(Vecteur V) {
+	return sqrt(pow(V.x, 2) + pow(V.y, 2));
+}
