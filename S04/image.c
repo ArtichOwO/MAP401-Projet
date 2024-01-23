@@ -262,8 +262,8 @@ Image negatif_image(Image I)
 	UINT L = largeur_image(In);
 
 	for (i = 0; i < L * H; i++)
-		set_pixel_image(In, i%L, i/L, 
-			get_pixel_image(In, i%L, i/L) == BLANC ? NOIR : BLANC);
+		set_pixel_image(In, i%L+1, i/L+1, 
+			get_pixel_image(In, i%L+1, i/L+1) == BLANC ? NOIR : BLANC);
 
 	return In;
 }
