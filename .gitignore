@@ -5,6 +5,8 @@ IMAGES_TEST/
 
 test_image
 
+*.zip
+
 # Prerequisites
 *.d
 
