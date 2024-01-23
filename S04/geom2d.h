@@ -15,4 +15,6 @@ Point set_point(double x, double y);
 
 Point add_point(Point P1, Point P2);
 
+Vecteur vect_bipoint(Point A, Point B);
+
 #endif

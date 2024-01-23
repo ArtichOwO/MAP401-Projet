@@ -16,3 +16,13 @@ Point add_point(Point P1, Point P2)
     P.y = P1.y + P2.y;
     return P;
 }
+
+Vecteur vect_bipoint(Point A, Point B) {
+	Vecteur v = {
+		.x = B.x - A.x,
+		.y = B.y - A.y
+	};
+
+	return v;
+}
+
