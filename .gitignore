@@ -7,6 +7,7 @@ test_image
 test_geom2d
 
 *.zip
+*.pdf
 
 # Prerequisites
 *.d
