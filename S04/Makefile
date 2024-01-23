@@ -70,10 +70,24 @@ image.o : image.c image.h types_macros.h
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
+geom2d.o : geom2d.c geom2d.h types_macros.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module geom2d"
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
 test_image.o : test_image.c image.h 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module test_image"
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test_geom2d.o : test_geom2d.c geom2d.h 
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test_geom2d"
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 		
@@ -82,6 +96,13 @@ test_image.o : test_image.c image.h
 # regles explicites de creation des executables
 
 test_image : test_image.o image.o 
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+test_geom2d : test_geom2d.o geom2d.o 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
