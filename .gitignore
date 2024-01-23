@@ -1,6 +1,8 @@
 #MacOS
 .DS_Store
 
+IMAGES_TEST/
+
 # Prerequisites
 *.d
 
