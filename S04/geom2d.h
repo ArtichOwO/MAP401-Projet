@@ -12,11 +12,12 @@ typedef struct Point_
 } Point;
 
 Point set_point(double x, double y);
+Vecteur set_vect(double x, double y);
 
 Point add_point(Point P1, Point P2);
+Vecteur add_vect(Vecteur A, Vecteur B);
 
 Point produit_reel_point(Point P, double l);
-
 Vecteur produit_reel_vecteur(Vecteur V, double l);
 
 Vecteur vect_bipoint(Point A, Point B);

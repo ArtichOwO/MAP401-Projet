@@ -7,10 +7,25 @@ Point set_point(double x, double y)
     return P;
 }
 
+Vecteur set_vect(double x, double y)
+{
+    Vecteur V = {x ,y};
+    return V;
+}
+
 Point add_point(Point P1, Point P2)
 {
     Point P = {P1.x + P2.x, P1.y + P2.y};
     return P;
+}
+
+Vecteur add_vect(Vecteur A, Vecteur B)
+{
+    Vecteur v = {
+    	.x = A.x + B.x,
+    	.y = A.y + B.y
+    };
+    return v;
 }
 
 Point produit_reel_point(Point P, double l)
