@@ -27,4 +27,7 @@ double produit_scalaire(Vecteur A, Vecteur B);
 double point_norme(Point P1, Point P2);
 double vect_norme(Vecteur V);
 
+void afficher_point(Point P);
+void afficher_vecteur(Vecteur V);
+
 #endif

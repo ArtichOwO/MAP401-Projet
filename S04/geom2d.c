@@ -60,3 +60,13 @@ double point_norme(Point P1, Point P2) {
 double vect_norme(Vecteur V) {
 	return sqrt(pow(V.x, 2) + pow(V.y, 2));
 }
+
+void afficher_point(Point P)
+{
+    printf("P = (%f, %f)\n", P.x, P.y);
+}
+
+void afficher_vecteur(Vecteur V)
+{
+    printf("V = (%f, %f)\n", V.x, V.y);
+}
