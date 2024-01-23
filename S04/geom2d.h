@@ -17,7 +17,7 @@ Point add_point(Point P1, Point P2);
 
 Point produit_reel_point(Point P, double l);
 
-Point produit_reel_vecteur(Vecteur V, double l);
+Vecteur produit_reel_vecteur(Vecteur V, double l);
 
 Vecteur vect_bipoint(Point A, Point B);
 

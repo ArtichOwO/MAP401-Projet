@@ -19,7 +19,7 @@ Point produit_reel_point(Point P, double l)
     return P1;
 }
 
-Point produit_reel_point(Vecteur V, double l)
+Vecteur produit_reel_vecteur(Vecteur V, double l)
 {
     Vecteur V1 = {V.x * l, V.y * l};
     return V1;
