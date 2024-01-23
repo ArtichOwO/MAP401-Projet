@@ -1,5 +1,6 @@
 #include "geom2d.h"
 #include <math.h>
+#include <stdio.h>
 
 Point set_point(double x, double y)
 {
@@ -63,10 +64,10 @@ double vect_norme(Vecteur V) {
 
 void afficher_point(Point P)
 {
-    printf("P = (%f, %f)\n", P.x, P.y);
+    printf("(%.0lf, %.0lf)", P.x, P.y);
 }
 
 void afficher_vecteur(Vecteur V)
 {
-    printf("V = (%f, %f)\n", V.x, V.y);
+    printf("(%.0lf, %.0lf)", V.x, V.y);
 }
