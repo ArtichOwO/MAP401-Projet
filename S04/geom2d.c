@@ -1,5 +1,6 @@
 #include "geom2d.h"
 #include <math.h>
+#include "types_macros.h"
 
 Point set_point(double x, double y)
 {
@@ -26,3 +27,6 @@ Vecteur vect_bipoint(Point A, Point B) {
 	return v;
 }
 
+double prod_scalaire(Vecteur A, Vecteur B) {
+	return A.x*B.x + A.y*B.y;
+}
