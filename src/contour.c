@@ -1,5 +1,6 @@
 #include "contour.h"
 #include "image.h"
+#include "geom2d.h"
 #include <stdio.h>
 
 char * orientation_to_string(Orientation o) {
@@ -51,6 +52,22 @@ void tourner_droite(RobotContour * rc) {
 	}
 }
 
+void avancer(RobotContour * rc) {
+	switch (rc->o) {
+		case NORD:
+			rc->y--;
+			break;
+		case SUD:
+			rc->y++;
+			break;
+		case EST:
+			rc->x++;
+			break;
+		case OUEST:
+			rc->x--;
+	}
+}
+
 void nouvelle_orientation(Image I, RobotContour * rc) {
 	Pixel D, G;
 	switch (rc->o) {
@@ -75,4 +92,25 @@ void nouvelle_orientation(Image I, RobotContour * rc) {
 		tourner_gauche(rc);
 	else if (D == BLANC)
 		tourner_droite(rc);
+}
+
+void trouver_contour(Image I) {
+	Point depart = trouver_pixel_depart(I);
+	depart.x--;
+	depart.y--;
+
+	RobotContour rc = {
+		.x = depart.x,
+		.y = depart.y,
+		.o = EST
+	};
+
+	do {
+		memoriser_position(&rc);
+		avancer(&rc);
+		nouvelle_orientation(I, &rc);
+
+		if (rc.x == depart.x && rc.y == depart.y && rc.o == EST)
+			break;
+	} while (true);
 }
