@@ -1,30 +1,22 @@
 #############################################################################
-# Fichier Makefile 
-# UE MAP401 - DLST - UGA - 2020/2021
-#############################################################################
-# utilisation des variables internes $@ $< $^ $*
-# $@ : correspond au nom de la cible
-# $< : correspond au nom de la premiere dependance
-# $^ : correspond à toutes les dépendances
-# $* : correspond au nom du fichier sans extension 
-#       (dans les regles generiques uniquement)
-#############################################################################
-# information sur la regle executee avec la commande @echo
-# (une commande commancant par @ n'est pas affichee a l'ecran)
+# Fichier Makefile
+# UE MAP401 - DLST - UGA - 2023/2024
 #############################################################################
 
-
 #############################################################################
-# definition des variables locales
+# définition des variables locales
 #############################################################################
 
 # compilateur C
 CC = clang
 
-# chemin d'acces aux librairies (interfaces)
+# chemin d'accès aux sources
+SRCDIR = src
+
+# chemin d'accès aux librairies (interfaces)
 INCDIR = include
 
-# chemin d'acces aux librairies (binaires)
+# chemin d'accès aux librairies (binaires)
 LIBDIR = .
 
 # options pour l'édition des liens
@@ -36,80 +28,52 @@ INCLUDEOPTS = -I$(INCDIR)
 # options de compilation
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
-# liste des executables
+# liste des exécutables
 EXECUTABLES = test_image test_geom2d
 
 
 #############################################################################
-# definition des regles
+# définition des règles
 #############################################################################
 
 ########################################################
 # la règle par défaut
-all : $(EXECUTABLES)
+all: $(EXECUTABLES)
 
 ########################################################
-# regle generique : 
-#  remplace les regles de compilation separee de la forme
-#	module.o : module.c module.h
-#		$(CC) -c $(COMPILOPTS) module.c
-%.o : %.c %.h
+# règles génériques
+%.o: $(SRCDIR)/%.c
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $<
+	$(CC) -c $(COMPILOPTS) $< -o $(SRCDIR)/$@
 
-########################################################
-# regles explicites de compilation separee de modules
-# n'ayant pas de fichier .h ET/OU dependant d'autres modules
-image.o : image.c include/image.h include/types_macros.h
-	@echo ""
-	@echo "---------------------------------------------"
-	@echo "Compilation du module image"
-	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $<
-
-geom2d.o : geom2d.c include/geom2d.h include/types_macros.h
-	@echo ""
-	@echo "---------------------------------------------"
-	@echo "Compilation du module geom2d"
-	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $<
-
-test_image.o : test_image.c include/image.h 
-	@echo ""
-	@echo "---------------------------------------------"
-	@echo "Compilation du module test_image"
-	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $<
-
-test_geom2d.o : test_geom2d.c include/geom2d.h 
-	@echo ""
-	@echo "---------------------------------------------"
-	@echo "Compilation du module test_geom2d"
-	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $<
-		
-		
-########################################################
-# regles explicites de creation des executables
-
-test_image : test_image.o image.o 
+%: %.o
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
 	@echo "---------------------------------------------"
-	$(CC) $^ $(LDOPTS) -o $@
+	$(CC) $(addprefix $(SRCDIR)/, $^) $(LDOPTS) -o $@
 
-test_geom2d : test_geom2d.o geom2d.o 
-	@echo ""
-	@echo "---------------------------------------------"
-	@echo "Creation de l'executable "$@
-	@echo "---------------------------------------------"
-	$(CC) $^ $(LDOPTS) -o $@
+########################################################
+# règles explicites de compilation séparée de modules
+# n'ayant pas de fichier .h ET/OU dépendant d'autres modules
+image.o: $(SRCDIR)/image.c $(INCDIR)/image.h $(INCDIR)/types_macros.h
 
+geom2d.o: $(SRCDIR)/geom2d.c $(INCDIR)/geom2d.h $(INCDIR)/types_macros.h
 
-# regle pour "nettoyer" le répertoire
+test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
+
+test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
+
+########################################################
+# règles explicites de création des exécutables
+
+test_image: test_image.o image.o
+
+test_geom2d: test_geom2d.o geom2d.o
+
+# règle pour "nettoyer" le répertoire
 clean:
-	rm -fR $(EXECUTABLES) *.o 
+	rm -fR $(EXECUTABLES) $(SRCDIR)/*.o
