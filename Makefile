@@ -67,6 +67,8 @@ test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
 
 test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
 
+liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
+
 ########################################################
 # règles explicites de création des exécutables
 
