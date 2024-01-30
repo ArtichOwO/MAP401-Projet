@@ -22,7 +22,7 @@
 CC = clang
 
 # chemin d'acces aux librairies (interfaces)
-INCDIR = .
+INCDIR = include
 
 # chemin d'acces aux librairies (binaires)
 LIBDIR = .
@@ -63,28 +63,28 @@ all : $(EXECUTABLES)
 ########################################################
 # regles explicites de compilation separee de modules
 # n'ayant pas de fichier .h ET/OU dependant d'autres modules
-image.o : image.c image.h types_macros.h
+image.o : image.c include/image.h include/types_macros.h
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module image"
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
-geom2d.o : geom2d.c geom2d.h types_macros.h
+geom2d.o : geom2d.c include/geom2d.h include/types_macros.h
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module geom2d"
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
-test_image.o : test_image.c image.h 
+test_image.o : test_image.c include/image.h 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module test_image"
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
-test_geom2d.o : test_geom2d.c geom2d.h 
+test_geom2d.o : test_geom2d.c include/geom2d.h 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module test_geom2d"

@@ -2,11 +2,11 @@
   Implementation du module image_pbm
 ******************************************************************************/
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"types_macros.h"
-#include"image.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "types_macros.h"
+#include "image.h"
 
 /* macro donnant l'indice du pixel de coordonnees (_x,_y) de l'image _I 
    dans le tableau de pixels de l'image _I */
