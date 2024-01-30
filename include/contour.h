@@ -11,4 +11,8 @@ typedef struct {
 	Orientation o;
 } RobotContour;
 
+char * orientation_to_string(Orientation o);
+
+void memoriser_position(RobotContour * rc);
+
 #endif

@@ -63,6 +63,8 @@ image.o: $(SRCDIR)/image.c $(INCDIR)/image.h $(INCDIR)/types_macros.h
 
 geom2d.o: $(SRCDIR)/geom2d.c $(INCDIR)/geom2d.h $(INCDIR)/types_macros.h
 
+contour.o: $(SRCDIR)/contour.c $(INCDIR)/contour.h
+
 test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
 
 test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
