@@ -15,5 +15,5 @@ char * orientation_to_string(Orientation o) {
 }
 
 void memoriser_position(RobotContour * rc) {
-	printf("(%i, %i, %s)", rc->x, rc->y, orientation_to_string(rc->o));
+	printf("(%.0lf, %.0lf, %s)\n", rc->x, rc->y, orientation_to_string(rc->o));
 }
