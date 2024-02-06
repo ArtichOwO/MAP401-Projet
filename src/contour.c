@@ -1,6 +1,6 @@
 #include "contour.h"
-#include "image.h"
 #include "geom2d.h"
+#include "image.h"
 #include <stdio.h>
 
 char * orientation_to_string(Orientation o) {
@@ -113,4 +113,20 @@ void trouver_contour(Image I) {
 		if (rc.x == depart.x && rc.y == depart.y && rc.o == EST)
 			break;
 	} while (true);
+}
+
+Point trouver_pixel_depart(Image I) {
+	int L = largeur_image(I);
+	int H = hauteur_image(I);
+	Point P;
+
+	for (int i = 0; i < L * H; i++)
+	{
+		if (get_pixel_image(I, i%L + 1, i/H) == BLANC && get_pixel_image(I, i%L + 1, i/H + 1) == NOIR) {
+			P.x = i % L;
+			P.y = i / H;
+			return P;
+		}
+	}
+	return;
 }
