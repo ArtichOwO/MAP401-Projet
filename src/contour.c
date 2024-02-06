@@ -1,11 +1,6 @@
 #include "contour.h"
-<<<<<<< Updated upstream
-#include "image.h"
-#include "geom2d.h"
-=======
 #include "geom2d.h"
 #include "image.h"
->>>>>>> Stashed changes
 #include <stdio.h>
 
 char * orientation_to_string(Orientation o) {
