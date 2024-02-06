@@ -94,6 +94,23 @@ void nouvelle_orientation(Image I, RobotContour * rc) {
 		tourner_droite(rc);
 }
 
+Point trouver_pixel_depart(Image I) {
+	int L = largeur_image(I);
+	int H = hauteur_image(I);
+	Point P = {0, 0};
+
+	for (int i = 0; i < L * H; i++)
+	{
+		if (get_pixel_image(I, i%L + 1, i/H) == BLANC && get_pixel_image(I, i%L + 1, i/H + 1) == NOIR) {
+			P.x = i % L;
+			P.y = (double)i / H;
+			return P;
+		}
+	}
+
+	return P;
+}
+
 void trouver_contour(Image I) {
 	Point depart = trouver_pixel_depart(I);
 	depart.x--;
@@ -113,20 +130,4 @@ void trouver_contour(Image I) {
 		if (rc.x == depart.x && rc.y == depart.y && rc.o == EST)
 			break;
 	} while (true);
-}
-
-Point trouver_pixel_depart(Image I) {
-	int L = largeur_image(I);
-	int H = hauteur_image(I);
-	Point P;
-
-	for (int i = 0; i < L * H; i++)
-	{
-		if (get_pixel_image(I, i%L + 1, i/H) == BLANC && get_pixel_image(I, i%L + 1, i/H + 1) == NOIR) {
-			P.x = i % L;
-			P.y = i / H;
-			return P;
-		}
-	}
-	return;
 }
