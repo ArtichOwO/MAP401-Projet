@@ -4,22 +4,22 @@
 #############################################################################
 
 #############################################################################
-# définition des variables locales
+# dï¿½finition des variables locales
 #############################################################################
 
 # compilateur C
 CC = clang
 
-# chemin d'accès aux sources
+# chemin d'accï¿½s aux sources
 SRCDIR = src
 
-# chemin d'accès aux librairies (interfaces)
+# chemin d'accï¿½s aux librairies (interfaces)
 INCDIR = include
 
-# chemin d'accès aux librairies (binaires)
+# chemin d'accï¿½s aux librairies (binaires)
 LIBDIR = .
 
-# options pour l'édition des liens
+# options pour l'ï¿½dition des liens
 LDOPTS = -L$(LIBDIR) -lm
 
 # options pour la recherche des fichiers .o et .h
@@ -28,20 +28,20 @@ INCLUDEOPTS = -I$(INCDIR)
 # options de compilation
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
-# liste des exécutables
+# liste des exï¿½cutables
 EXECUTABLES = test_image test_geom2d test_contour
 
 
 #############################################################################
-# définition des règles
+# dï¿½finition des rï¿½gles
 #############################################################################
 
 ########################################################
-# la règle par défaut
+# la rï¿½gle par dï¿½faut
 all: $(EXECUTABLES)
 
 ########################################################
-# règles génériques
+# rï¿½gles gï¿½nï¿½riques
 %.o: $(SRCDIR)/%.c
 	@echo ""
 	@echo "---------------------------------------------"
@@ -57,8 +57,8 @@ all: $(EXECUTABLES)
 	$(CC) $(addprefix $(SRCDIR)/, $^) $(LDOPTS) -o $@
 
 ########################################################
-# règles explicites de compilation séparée de modules
-# n'ayant pas de fichier .h ET/OU dépendant d'autres modules
+# rï¿½gles explicites de compilation sï¿½parï¿½e de modules
+# n'ayant pas de fichier .h ET/OU dï¿½pendant d'autres modules
 image.o: $(SRCDIR)/image.c $(INCDIR)/image.h $(INCDIR)/types_macros.h
 
 geom2d.o: $(SRCDIR)/geom2d.c $(INCDIR)/geom2d.h $(INCDIR)/types_macros.h
@@ -70,9 +70,10 @@ test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
 test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
 
 test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/contour.h
+liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
 ########################################################
-# règles explicites de création des exécutables
+# rï¿½gles explicites de crï¿½ation des exï¿½cutables
 
 test_image: test_image.o image.o
 
@@ -80,6 +81,6 @@ test_geom2d: test_geom2d.o geom2d.o
 
 test_contour: test_contour.o image.o geom2d.o contour.o
 
-# règle pour "nettoyer" le répertoire
+# rï¿½gle pour "nettoyer" le rï¿½pertoire
 clean:
 	rm -fR $(EXECUTABLES) $(SRCDIR)/*.o
