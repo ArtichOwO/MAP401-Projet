@@ -15,4 +15,6 @@ char * orientation_to_string(Orientation o);
 
 void memoriser_position(RobotContour * rc);
 
+Point trouver_pixel_depart(Image I)
+
 #endif
