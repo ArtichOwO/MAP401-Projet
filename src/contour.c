@@ -101,9 +101,10 @@ Point trouver_pixel_depart(Image I) {
 
 	for (int i = 0; i < L * H; i++)
 	{
-		if (get_pixel_image(I, i%L + 1, i/H + 1) == BLANC && get_pixel_image(I, i%L + 1, i/H + 1) == NOIR) {
-			P.x = i % L + 1;
-			P.y = (double)i / H + 1;
+		if (get_pixel_image(I, i%L + 1, i/L) == BLANC
+			&& get_pixel_image(I, i%L + 1, i/L + 1) == NOIR) {
+			P.x = i % L;
+			P.y = i / L;
 			return P;
 		}
 	}
@@ -113,8 +114,6 @@ Point trouver_pixel_depart(Image I) {
 
 void trouver_contour(Image I) {
 	Point depart = trouver_pixel_depart(I);
-	depart.x--;
-	depart.y--;
 
 	RobotContour rc = {
 		.x = depart.x,
