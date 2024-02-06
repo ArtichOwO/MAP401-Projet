@@ -15,6 +15,4 @@ typedef struct {
 
 void trouver_contour(Image I);
 
-Point trouver_pixel_depart(Image I)
-
 #endif
