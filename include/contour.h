@@ -1,6 +1,8 @@
 #ifndef CONTOUR_H
 #define CONTOUR_H
 
+#include "image.h"
+
 typedef enum {
 	NORD, SUD, EST, OUEST
 } Orientation;
@@ -11,8 +13,6 @@ typedef struct {
 	Orientation o;
 } RobotContour;
 
-char * orientation_to_string(Orientation o);
-
-void memoriser_position(RobotContour * rc);
+void trouver_contour(Image I);
 
 #endif

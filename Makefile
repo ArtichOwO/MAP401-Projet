@@ -29,7 +29,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
 # liste des exécutables
-EXECUTABLES = test_image test_geom2d
+EXECUTABLES = test_image test_geom2d test_contour
 
 
 #############################################################################
@@ -69,12 +69,16 @@ test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
 
 test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
 
+test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/contour.h
+
 ########################################################
 # règles explicites de création des exécutables
 
 test_image: test_image.o image.o
 
 test_geom2d: test_geom2d.o geom2d.o
+
+test_contour: test_contour.o image.o geom2d.o contour.o
 
 # règle pour "nettoyer" le répertoire
 clean:
