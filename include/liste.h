@@ -5,30 +5,32 @@
 /* type liste de points */
 typedef struct
 {
-} Liste_Point;
+    Point p;
+    Cellule *n;
+} Cellule;
 
-typedef Liste_Point Contour;
+typedef Cellule Contour;
 
 /* type tableau */
 typedef Point* Tableau_Points;
 
 /* Cree une liste chaînee vide */
-Liste_Point creer_liste();
+Cellule *creer_liste();
 
 /* Ajoute un element dans la liste */
-Liste_Point ajouter_element_liste(Liste_Point L, Point e);
+void ajouter_element_liste(Cellule *L, Point e);
 
 /* supprime la liste */
-Liste_Point supprimer_liste(Liste_Point L);
+void supprimer_liste(Cellule *L);
 
 /* concatene L2 a L1 */
-Liste_Point concatener_liste(Liste_Point L1, Liste_Point L2);
+Cellule *concatener_liste(Cellule *L1, Cellule *L2);
 
 /* supprime le premier element de la liste */
-Liste_Point supprimer_premier_element(Liste_Point L);
+Cellule *supprimer_premier_element(Cellule *L);
 
 /* convertit la liste en tableau */
-Tableau_Point sequence_points_tableau(Liste_Point L);
+Tableau_Points sequence_points_tableau(Cellule *L);
 
 /* Affiche le contours de l'image */
-void ecrire_contour(Liste_Point L);
+void ecrire_contour(Cellule *L);
