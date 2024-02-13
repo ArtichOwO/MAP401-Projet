@@ -28,5 +28,7 @@ int main(int argc, char * argv[]) {
 		L = L->n;
 	}
 
+	fclose(fd);
+
 	return 0;
 }
