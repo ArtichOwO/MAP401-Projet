@@ -49,12 +49,12 @@ $(SRCDIR)/%.o: $(SRCDIR)/%.c
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $< -o $@
 
-%: %.o
+%: $(SRCDIR)/%.o
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
 	@echo "---------------------------------------------"
-	$(CC) $(addprefix $(SRCDIR)/, $^) $(LDOPTS) -o $@
+	$(CC) $^ $(LDOPTS) -o $@
 
 ########################################################
 # règles explicites de compilation séparée de modules
