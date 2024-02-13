@@ -1,4 +1,6 @@
 #include "liste.h"
+#include "geom2d.h"
+#include <stdio.h>
 
 int longueur_liste(Liste L) {
     int longueur = 0;
@@ -19,7 +21,7 @@ void ajouter_element_liste(Liste * L, Point e) {
 
     if (!current) L->t = c;
     else {
-        while (!current->n) current = current->n;
+        while (current->n != NULL) current = current->n;
         current->n = c;
     }
 }

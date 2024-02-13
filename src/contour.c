@@ -133,5 +133,6 @@ Liste trouver_contour(Image I) {
 			break;
 	} while (true);
 
+	memoriser_position(rc, &L);
 	return L;
 }

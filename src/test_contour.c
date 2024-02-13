@@ -23,10 +23,10 @@ int main(int argc, char * argv[]) {
 	filename = strcat(argv[1], ext);
 	FILE * fd = fopen(filename, "w");
 
-	fprintf(fd, "1\n\n%i\n", longueur_liste(L));
+	fprintf(fd, "1\n\n%i\n", longueur_liste(L) - 1);
 	Cellule * c = L.t;
 	while (c) {
-		fprintf(fd, " %.1lf %.1lf", c->p.x, c->p.y);
+		fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
 		c = c->n;
 	}
 
