@@ -1,12 +1,15 @@
+#ifndef LISTE_H
+#define LISTE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "geom2d.h"
 
 /* type liste de points */
-typedef struct
+typedef struct Cellule_s
 {
     Point p;
-    Cellule *n;
+    struct Cellule_s *n;
 } Cellule;
 
 typedef Cellule Contour;
@@ -33,4 +36,6 @@ Cellule *supprimer_premier_element(Cellule *L);
 Tableau_Points sequence_points_tableau(Cellule *L);
 
 /* Affiche le contours de l'image */
-void ecrire_contour(Cellule *L);
+void imprimer_liste(Cellule *L);
+
+#endif

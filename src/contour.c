@@ -1,6 +1,7 @@
 #include "contour.h"
 #include "geom2d.h"
 #include "image.h"
+#include "liste.h"
 #include <stdio.h>
 
 char * orientation_to_string(Orientation o) {
@@ -16,8 +17,8 @@ char * orientation_to_string(Orientation o) {
 	}
 }
 
-void memoriser_position(RobotContour * rc) {
-	printf("(%.0lf, %.0lf, %s)\n", rc->x, rc->y, orientation_to_string(rc->o));
+void memoriser_position(RobotContour * rc, Cellule * ListePos) {
+	ajouter_element_liste(ListePos, rc->pos);
 }
 
 void tourner_gauche(RobotContour * rc) {
@@ -55,16 +56,16 @@ void tourner_droite(RobotContour * rc) {
 void avancer(RobotContour * rc) {
 	switch (rc->o) {
 		case NORD:
-			rc->y--;
+			rc->pos.y--;
 			break;
 		case SUD:
-			rc->y++;
+			rc->pos.y++;
 			break;
 		case EST:
-			rc->x++;
+			rc->pos.x++;
 			break;
 		case OUEST:
-			rc->x--;
+			rc->pos.x--;
 	}
 }
 
@@ -72,20 +73,20 @@ void nouvelle_orientation(Image I, RobotContour * rc) {
 	Pixel D, G;
 	switch (rc->o) {
 		case NORD:
-			G = get_pixel_image(I, rc->x, rc->y);
-			D = get_pixel_image(I, rc->x+1, rc->y);
+			G = get_pixel_image(I, rc->pos.x, rc->pos.y);
+			D = get_pixel_image(I, rc->pos.x+1, rc->pos.y);
 			break;
 		case SUD:
-			G = get_pixel_image(I, rc->x+1, rc->y+1);
-			D = get_pixel_image(I, rc->x, rc->y+1);
+			G = get_pixel_image(I, rc->pos.x+1, rc->pos.y+1);
+			D = get_pixel_image(I, rc->pos.x, rc->pos.y+1);
 			break;
 		case EST:
-			G = get_pixel_image(I, rc->x+1, rc->y);
-			D = get_pixel_image(I, rc->x+1, rc->y+1);
+			G = get_pixel_image(I, rc->pos.x+1, rc->pos.y);
+			D = get_pixel_image(I, rc->pos.x+1, rc->pos.y+1);
 			break;
 		case OUEST:
-			G = get_pixel_image(I, rc->x, rc->y+1);
-			D = get_pixel_image(I, rc->x, rc->y);
+			G = get_pixel_image(I, rc->pos.x, rc->pos.y+1);
+			D = get_pixel_image(I, rc->pos.x, rc->pos.y);
 	}
 
 	if (G == NOIR)
@@ -112,21 +113,23 @@ Point trouver_pixel_depart(Image I) {
 	return P;
 }
 
-void trouver_contour(Image I) {
+Cellule * trouver_contour(Image I) {
+	Cellule * c = creer_liste();
 	Point depart = trouver_pixel_depart(I);
 
 	RobotContour rc = {
-		.x = depart.x,
-		.y = depart.y,
+		.pos = depart,
 		.o = EST
 	};
 
 	do {
-		memoriser_position(&rc);
+		memoriser_position(&rc, c);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
 
-		if (rc.x == depart.x && rc.y == depart.y && rc.o == EST)
+		if (rc.pos.x == depart.x && rc.pos.y == depart.y && rc.o == EST)
 			break;
 	} while (true);
+
+	return c;
 }

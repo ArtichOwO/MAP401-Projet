@@ -1,5 +1,6 @@
 #include "contour.h"
 #include "image.h"
+#include "liste.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +11,7 @@ int main(int argc, char * argv[]) {
 	}
 
 	Image I = lire_fichier_image(argv[1]);
-	trouver_contour(I);
+	imprimer_liste(trouver_contour(I));
 
 	return 0;
 }
