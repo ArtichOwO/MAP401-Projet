@@ -12,20 +12,22 @@ int main(int argc, char * argv[]) {
 	}
 
 	Image I = lire_fichier_image(argv[1]);
-	Cellule * L = trouver_contour(I);
+	Liste L = trouver_contour(I);
 	imprimer_liste(L);
 	printf("Nombre de segments : %i\n", longueur_liste(L) - 1);
 
 	char * ext = ".contours";
 	*strrchr(argv[1], '.') = 0;
-	argv[1] = realloc(argv[1], strlen(argv[1])+strlen(ext));
-	char * filename = strcat(argv[1], ext);
+	char * filename = malloc(strlen(argv[1])+strlen(ext));
+	strcpy(filename, argv[1]);
+	filename = strcat(argv[1], ext);
 	FILE * fd = fopen(filename, "w");
 
 	fprintf(fd, "1\n\n%i\n", longueur_liste(L));
-	while (L) {
-		fprintf(fd, " %.1lf %.1lf", L->p.x, L->p.y);
-		L = L->n;
+	Cellule * c = L.t;
+	while (c) {
+		fprintf(fd, " %.1lf %.1lf", c->p.x, c->p.y);
+		c = c->n;
 	}
 
 	fclose(fd);
