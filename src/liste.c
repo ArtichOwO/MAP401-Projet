@@ -18,6 +18,7 @@ void ajouter_element_liste(Liste * L, Point e) {
     Cellule *current = L->t;
     Cellule *c = malloc(sizeof(Cellule));
     c->p = e;
+    c->n = NULL;
 
     if (!current) L->t = c;
     else {
