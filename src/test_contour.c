@@ -13,7 +13,7 @@ int main(int argc, char * argv[]) {
 	Image I = lire_fichier_image(argv[1]);
 	Cellule * L = trouver_contour(I);
 	imprimer_liste(L);
-	printf("Nombre de segments : %i\n", longueur_liste(L));
+	printf("Nombre de segments : %i\n", longueur_liste(L) - 1);
 
 	return 0;
 }
