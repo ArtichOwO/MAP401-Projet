@@ -30,13 +30,13 @@ void ajouter_element_liste(Cellule *L, Point e);
 void supprimer_liste(Cellule *L);
 
 /* concatene L2 a L1 */
-Cellule *concatener_liste(Cellule *L1, Cellule *L2);
+void concatener_liste(Cellule *L1, Cellule *L2);
 
 /* supprime le premier element de la liste */
-Cellule *supprimer_premier_element(Cellule *L);
+void supprimer_premier_element(Cellule *L);
 
-/* convertit la liste en tableau */
-Tableau_Points sequence_points_tableau(Cellule *L);
+// /* convertit la liste en tableau */
+// Tableau_Points sequence_points_tableau(Cellule *L);
 
 /* Affiche le contours de l'image */
 void imprimer_liste(Cellule *L);

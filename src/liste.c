@@ -32,3 +32,40 @@ void supprimer_liste(Cellule *L) {
         
     }
 }
+
+void concatener_liste(Cellule *L1, Cellule *L2) {
+    Cellule *current = L1;
+
+    if (current == NULL)
+    {
+        L1 = L2;
+    }
+
+    while (current->n != NULL) {
+        current = current->n;
+    }
+    current->n = L2;
+}
+
+void supprimer_premier_element(Cellule *L) {
+    
+    if (L != NULL) {
+        Cellule *c = L;
+        L = L->n;
+        free(c);
+    }
+}
+
+// Tableau_Points sequence_points_tableau(Cellule *L) {
+//     int Taille = longueur_liste(L);
+
+//     if (Taille != 0) {
+//         Tableau_Points tab = 
+//         Cellule *current = L;
+
+//         for (int i = 0; i < Taille; i++) {
+//             Tab[i] = current->p;
+//             current = current->n;
+//         }
+//     }
+// }
