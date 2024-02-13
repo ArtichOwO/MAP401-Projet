@@ -17,6 +17,9 @@ typedef Point* Tableau_Points;
 /* Cree une liste chaînee vide */
 Cellule *creer_liste();
 
+/* Renvoie la longueur */
+int longueur_liste(Cellule *L);
+
 /* Ajoute un element dans la liste */
 void ajouter_element_liste(Cellule *L, Point e);
 
