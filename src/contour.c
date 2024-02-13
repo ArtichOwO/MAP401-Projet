@@ -17,7 +17,7 @@ char * orientation_to_string(Orientation o) {
 	}
 }
 
-void memoriser_position(RobotContour rc, Cellule * ListePos) {
+void memoriser_position(RobotContour rc, Liste * ListePos) {
 	ajouter_element_liste(ListePos, rc.pos);
 }
 
@@ -113,8 +113,8 @@ Point trouver_pixel_depart(Image I) {
 	return P;
 }
 
-Cellule * trouver_contour(Image I) {
-	Cellule * c = creer_liste();
+Liste trouver_contour(Image I) {
+	Liste L;
 	Point depart = trouver_pixel_depart(I);
 
 	RobotContour rc = {
@@ -123,7 +123,7 @@ Cellule * trouver_contour(Image I) {
 	};
 
 	do {
-		memoriser_position(rc, c);
+		memoriser_position(rc, &L);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
 
@@ -133,5 +133,5 @@ Cellule * trouver_contour(Image I) {
 			break;
 	} while (true);
 
-	return c;
+	return L;
 }

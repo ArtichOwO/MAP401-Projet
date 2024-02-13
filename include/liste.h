@@ -12,33 +12,34 @@ typedef struct Cellule_s
     struct Cellule_s *n;
 } Cellule;
 
+typedef struct {
+    Cellule *t;
+} Liste;
+
 typedef Cellule Contour;
 
 /* type tableau */
 typedef Point* Tableau_Points;
 
-/* Cree une liste chaînee vide */
-Cellule *creer_liste();
-
 /* Renvoie la longueur */
-int longueur_liste(Cellule *L);
+int longueur_liste(Liste L);
 
 /* Ajoute un element dans la liste */
-void ajouter_element_liste(Cellule *L, Point e);
+void ajouter_element_liste(Liste * L, Point e);
 
 /* supprime la liste */
-void supprimer_liste(Cellule *L);
+void supprimer_liste(Liste * L);
 
 /* concatene L2 a L1 */
-void concatener_liste(Cellule *L1, Cellule *L2);
+void concatener_liste(Liste * L1, Liste * L2);
 
 /* supprime le premier element de la liste */
-void supprimer_premier_element(Cellule *L);
+void supprimer_premier_element(Liste * L);
 
 // /* convertit la liste en tableau */
-// Tableau_Points sequence_points_tableau(Cellule *L);
+// Tableau_Points sequence_points_tableau(Liste L);
 
 /* Affiche le contours de l'image */
-void imprimer_liste(Cellule *L);
+void imprimer_liste(Liste L);
 
 #endif

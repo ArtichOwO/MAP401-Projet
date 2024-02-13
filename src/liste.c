@@ -1,29 +1,30 @@
 #include "liste.h"
 
-Cellule *creer_liste() {
-    return malloc(sizeof(Cellule));
-}
-
-int longueur_liste(Cellule *L) {
+int longueur_liste(Liste L) {
     int longueur = 0;
-    Cellule *c = L;
+    Cellule *c = L.t;
 
     while (c) {
         longueur++;
         c = c->n;
     }
+
     return longueur;
 }
 
-void ajouter_element_liste(Cellule *L, Point e) {
-    Cellule *current = L;
+void ajouter_element_liste(Liste * L, Point e) {
+    Cellule *current = L->t;
     Cellule *c = malloc(sizeof(Cellule));
+    c->p = e;
 
-    while (!current->n) current = current->n;
-    current->n = c;
+    if (!current) L->t = c;
+    else {
+        while (!current->n) current = current->n;
+        current->n = c;
+    }
 }
 
-void supprimer_liste(Cellule *L) {
+void supprimer_liste(Liste *L) {
     Cellule *c = malloc(sizeof(Cellule));
 
     while (c) {
@@ -31,25 +32,24 @@ void supprimer_liste(Cellule *L) {
     }
 }
 
-void concatener_liste(Cellule *L1, Cellule *L2) {
-    Cellule *current = L1;
+void concatener_liste(Liste *L1, Liste *L2) {
+    Cellule *current = L1->t;
 
     if (current == NULL)
     {
-        L1 = L2;
+        L1->t = L2->t;
     }
 
     while (current->n) {
         current = current->n;
     }
-    current->n = L2;
+    current->n = L2->t;
 }
 
-void supprimer_premier_element(Cellule *L) {
-    
-    if (L) {
-        Cellule *c = L;
-        L = L->n;
+void supprimer_premier_element(Liste *L) {
+    if (L->t) {
+        Cellule *c = L->t;
+        L->t = L->t->n;
         free(c);
     }
 }
@@ -68,8 +68,8 @@ void supprimer_premier_element(Cellule *L) {
 //     }
 // }
 
-void imprimer_liste(Cellule *L) {
-    Cellule *current = L;
+void imprimer_liste(Liste L) {
+    Cellule *current = L.t;
 
     while (current) {
         afficher_point(current->p);

@@ -14,6 +14,6 @@ typedef struct {
 	Orientation o;
 } RobotContour;
 
-Cellule * trouver_contour(Image I);
+Liste trouver_contour(Image I);
 
 #endif
