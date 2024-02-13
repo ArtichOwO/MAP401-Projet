@@ -81,7 +81,7 @@ test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o
 test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 
 test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
-	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
 
 # règle pour "nettoyer" le répertoire
 clean:
