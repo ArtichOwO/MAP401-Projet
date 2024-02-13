@@ -17,8 +17,8 @@ char * orientation_to_string(Orientation o) {
 	}
 }
 
-void memoriser_position(RobotContour * rc, Cellule * ListePos) {
-	ajouter_element_liste(ListePos, rc->pos);
+void memoriser_position(RobotContour rc, Cellule * ListePos) {
+	ajouter_element_liste(ListePos, rc.pos);
 }
 
 void tourner_gauche(RobotContour * rc) {
@@ -123,7 +123,7 @@ Cellule * trouver_contour(Image I) {
 	};
 
 	do {
-		memoriser_position(&rc, c);
+		memoriser_position(rc, c);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
 
