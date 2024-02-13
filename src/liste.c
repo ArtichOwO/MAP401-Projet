@@ -8,7 +8,7 @@ int longueur_liste(Cellule *L) {
     int longueur = 0;
     Cellule *c = L;
 
-    while (c != NULL) {
+    while (c) {
         longueur++;
         c = c->n;
     }
@@ -28,7 +28,7 @@ void ajouter_element_liste(Cellule *L, Point e) {
 void supprimer_liste(Cellule *L) {
     Cellule *c = (Cellule *)malloc(sizeof(Cellule));
 
-    while (c != NULL) {
+    while (c) {
         
     }
 }
@@ -41,7 +41,7 @@ void concatener_liste(Cellule *L1, Cellule *L2) {
         L1 = L2;
     }
 
-    while (current->n != NULL) {
+    while (current->n) {
         current = current->n;
     }
     current->n = L2;
@@ -49,7 +49,7 @@ void concatener_liste(Cellule *L1, Cellule *L2) {
 
 void supprimer_premier_element(Cellule *L) {
     
-    if (L != NULL) {
+    if (L) {
         Cellule *c = L;
         L = L->n;
         free(c);
@@ -69,3 +69,12 @@ void supprimer_premier_element(Cellule *L) {
 //         }
 //     }
 // }
+
+void imprimer_liste(Cellule *L) {
+    Cellule *current = L;
+
+    while (L) {
+        afficher_point(current->p);
+        current = current->n;
+    }
+}
