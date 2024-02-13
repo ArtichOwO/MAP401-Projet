@@ -1,0 +1,11 @@
+personnage.pbm
+dimensions : 10x10
+segments : 32
+
+testimage.pbm
+dimensions : 4x4
+segments : 18
+
+testimage2.pbm
+dimensions : 6x3
+segments : 22
