@@ -42,12 +42,12 @@ all: $(EXECUTABLES)
 
 ########################################################
 # règles génériques
-%.o: $(SRCDIR)/%.c
+$(SRCDIR)/%.o: $(SRCDIR)/%.c
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
-	$(CC) -c $(COMPILOPTS) $< -o $(SRCDIR)/$@
+	$(CC) -c $(COMPILOPTS) $< -o $@
 
 %: %.o
 	@echo ""
@@ -59,28 +59,29 @@ all: $(EXECUTABLES)
 ########################################################
 # règles explicites de compilation séparée de modules
 # n'ayant pas de fichier .h ET/OU dépendant d'autres modules
-image.o: $(SRCDIR)/image.c $(INCDIR)/image.h $(INCDIR)/types_macros.h
+$(SRCDIR)/image.o: $(SRCDIR)/image.c $(INCDIR)/image.h $(INCDIR)/types_macros.h
 
-geom2d.o: $(SRCDIR)/geom2d.c $(INCDIR)/geom2d.h $(INCDIR)/types_macros.h
+$(SRCDIR)/geom2d.o: $(SRCDIR)/geom2d.c $(INCDIR)/geom2d.h $(INCDIR)/types_macros.h
 
-contour.o: $(SRCDIR)/contour.c $(INCDIR)/contour.h
+$(SRCDIR)/contour.o: $(SRCDIR)/contour.c $(INCDIR)/contour.h
 
-test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
+$(SRCDIR)/test_image.o: $(SRCDIR)/test_image.c $(INCDIR)/image.h
 
-test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
+$(SRCDIR)/test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
 
-test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/contour.h
+$(SRCDIR)/test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/contour.h
 
-liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
+$(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
 ########################################################
 # règles explicites de création des exécutables
 
-test_image: test_image.o image.o
+test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o
 
-test_geom2d: test_geom2d.o geom2d.o
+test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 
-test_contour: test_contour.o image.o geom2d.o contour.o
+test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o
 
 # règle pour "nettoyer" le répertoire
 clean:
