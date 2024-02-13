@@ -10,6 +10,8 @@ test_contour
 *.zip
 *.pdf
 
+*.contours
+
 # Prerequisites
 *.d
 
