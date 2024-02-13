@@ -127,7 +127,9 @@ Cellule * trouver_contour(Image I) {
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
 
-		if (rc.pos.x == depart.x && rc.pos.y == depart.y && rc.o == EST)
+		if (rc.pos.x == depart.x 
+			&& rc.pos.y == depart.y 
+			&& rc.o == EST)
 			break;
 	} while (true);
 
