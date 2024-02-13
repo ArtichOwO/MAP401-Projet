@@ -21,7 +21,7 @@ void ajouter_element_liste(Liste * L, Point e) {
 
     if (!current) L->t = c;
     else {
-        while (current->n != NULL) current = current->n;
+        while (current->n) current = current->n;
         current->n = c;
     }
 }
