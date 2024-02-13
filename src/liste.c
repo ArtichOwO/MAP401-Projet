@@ -75,6 +75,7 @@ void imprimer_liste(Cellule *L) {
 
     while (current) {
         afficher_point(current->p);
+        printf("\n");
         current = current->n;
     }
 }
