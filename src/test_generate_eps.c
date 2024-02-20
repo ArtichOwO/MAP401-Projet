@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
     } else if (argc == 3 ) {
-        if (!strcmp(argv[2], "true"))
+        if (!strcmp(argv[2], "fill"))
             fill = true;
     }
     
