@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 
     FILE *dest = fopen(filename, "w");
 
-    generate_eps(dest, I);
+    generate_eps(dest, I, false);
     fclose(dest);
     
     return 0;
