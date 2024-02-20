@@ -29,7 +29,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
 # liste des exécutables
-EXECUTABLES = test_image test_geom2d test_contour
+EXECUTABLES = test_image test_geom2d test_contour test_generate_eps
 
 
 #############################################################################
@@ -71,6 +71,9 @@ $(SRCDIR)/test_geom2d.o: $(SRCDIR)/test_geom2d.c $(INCDIR)/geom2d.h
 
 $(SRCDIR)/test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/contour.h
 
+$(SRCDIR)/test_generate_eps.o: $(SRCDIR)/test_generate_eps.c \
+	$(INCDIR)/image.h 
+
 $(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
 ########################################################
@@ -81,6 +84,9 @@ test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o
 test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 
 test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
+
+test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o \
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
 
 # règle pour "nettoyer" le répertoire
