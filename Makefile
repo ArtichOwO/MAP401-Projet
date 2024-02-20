@@ -88,7 +88,7 @@ test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
 
-test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o \
+test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o\
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
 
 # règle pour "nettoyer" le répertoire
