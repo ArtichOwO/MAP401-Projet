@@ -8,7 +8,7 @@ void generate_eps(FILE * fd, Image I, bool fill) {
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
 		   "%%%%BoundingBox: 0 0 %i %i\n\n"
-		   "0 0 0 setrgbcolor 1.0 setlinewidth\n\n",
+		   "0 0 0 setrgbcolor 0.0 setlinewidth\n\n",
 		   I.la_largeur_de_l_image, I.la_hauteur_de_l_image);
 
 	Cellule * c = contour.t;
