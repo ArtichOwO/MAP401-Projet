@@ -12,9 +12,9 @@ void generate_eps(FILE * fd, Image I, bool fill) {
 		   I.la_largeur_de_l_image, I.la_hauteur_de_l_image);
 
 	Cellule * c = contour.t;
-	fprintf(fd, "%.0lf %.0lf moveto", c->p.x, c->p.y);
+	fprintf(fd, "%.0lf %.0lf moveto\n", c->p.x, c->p.y);
 	while (c->n) {
-		fprintf(fd, " %.0lf %.0lf lineto", c->n->p.x,
+		fprintf(fd, "%.0lf %.0lf lineto\n", c->n->p.x,
 			I.la_hauteur_de_l_image - c->n->p.y);
 		c = c->n;
 	}
