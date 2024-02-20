@@ -11,7 +11,17 @@ int main(int argc, char *argv[]) {
 
     Image I = lire_fichier_image(argv[1]);
 
-    generate_eps(stdout, I);
+    // gen filename
+    char *ext = ".eps";
+    *strrchr(argv[1], '.') = 0;
+    char *filename = malloc(strlen(argv[1]) + strlen(ext));
+    strcpy(filename, argv[1]);
+    filename = strcat(argv[1], ext);
+
+    FILE *dest = fopen(filename, "w");
+
+    generate_eps(dest, I);
+    fclose(dest);
     
     return 0;
 }
