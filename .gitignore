@@ -5,16 +5,31 @@ IMAGES_TEST/
 TACHE3/
 TACHE5/
 
+# Milo files
+TEST_IMAGES/
+TEST_TACHE3/
+TEST_TACHE5/
+
+# CR
+*.zip
+*.pdf
+
+# test ouput files
+*.eps
+*.contours
+
+# Executables
 test_image
 test_geom2d
 test_contour
 test_generate_eps
 
-*.zip
-*.pdf
-
-*.eps
-*.contours
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
 # Prerequisites
 *.d
@@ -45,14 +60,6 @@ test_generate_eps
 *.so
 *.so.*
 *.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
 
 # Debug files
 *.dSYM/
