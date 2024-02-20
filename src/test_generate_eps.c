@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
         if (!strcmp(argv[2], "fill"))
             fill = true;
     }
-    
 
     Image I = lire_fichier_image(argv[1]);
 
