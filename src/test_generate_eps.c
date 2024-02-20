@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
     Image I = lire_fichier_image(argv[1]);
 
-    generate_eps(stdout, I);
+    generate_eps(stdout, I, false);
     
     return 0;
 }

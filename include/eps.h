@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include "image.h"
 
-void generate_eps(FILE * fd, Image I);
+void generate_eps(FILE * fd, Image I, bool fill);
 
 #endif

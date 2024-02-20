@@ -3,7 +3,7 @@
 #include "liste.h"
 #include <stdio.h>
 
-void generate_eps(FILE * fd, Image I) {
+void generate_eps(FILE * fd, Image I, bool fill) {
 	Liste contour = trouver_contour(I);
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
@@ -14,10 +14,12 @@ void generate_eps(FILE * fd, Image I) {
 	Cellule * c = contour.t;
 	fprintf(fd, "%.0lf %.0lf moveto", c->p.x, c->p.y);
 	while (c->n) {
-		fprintf(fd, " %.0lf %.0lf lineto", c->n->p.x, c->n->p.y);
+		fprintf(fd, " %.0lf %.0lf lineto", c->n->p.x,
+			I.la_hauteur_de_l_image - c->n->p.y);
 		c = c->n;
 	}
 
-	fprintf(fd, "\n\nstroke\n\n"
-			"showpage\n");
+	fprintf(fd, "\n\n%s\n\n"
+			"showpage\n",
+			fill ? "fill" : "stroke");
 }
