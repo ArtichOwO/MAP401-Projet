@@ -4,10 +4,16 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
+    bool fill = false;
+
+    if (argc < 2) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
+    } else if (argc == 3 ) {
+        if (!strcmp(argv[2], "true"))
+            fill = true;
     }
+    
 
     Image I = lire_fichier_image(argv[1]);
 
@@ -20,7 +26,7 @@ int main(int argc, char *argv[]) {
 
     FILE *dest = fopen(filename, "w");
 
-    generate_eps(dest, I, false);
+    generate_eps(dest, I, fill);
     fclose(dest);
     
     return 0;
