@@ -13,8 +13,10 @@ void generate_eps(FILE * fd, Image I) {
 
 	Cellule * c = contour.t;
 	fprintf(fd, "%.0lf %.0lf moveto", c->p.x, c->p.y);
-	while (c->n) 
+	while (c->n) {
 		fprintf(fd, " %.0lf %.0lf lineto", c->n->p.x, c->n->p.y);
+		c = c->n;
+	}
 
 	fprintf(fd, "\n\nstroke\n\n"
 			"showpage\n");
