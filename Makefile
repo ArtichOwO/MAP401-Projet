@@ -76,6 +76,8 @@ $(SRCDIR)/test_generate_eps.o: $(SRCDIR)/test_generate_eps.c \
 
 $(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
+$(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h
+
 ########################################################
 # règles explicites de création des exécutables
 
