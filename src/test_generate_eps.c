@@ -5,13 +5,20 @@
 
 int main(int argc, char *argv[]) {
     bool fill = false;
+    char *mode = malloc(8);
 
-    if (argc < 2) {
+    if (argc < 2 || argc > 3) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
     } else if (argc == 3 ) {
-        if (!strcmp(argv[2], "fill"))
-            fill = true;
+        if (!strcmp(argv[2], "fill")) fill = true;
+    }
+
+    if (fill) {
+        mode = "-fill";
+    }
+    else {
+        mode = "-stroke";
     }
 
     Image I = lire_fichier_image(argv[1]);
@@ -21,7 +28,7 @@ int main(int argc, char *argv[]) {
     *strrchr(argv[1], '.') = 0;
     char *filename = malloc(strlen(argv[1]) + strlen(ext));
     strcpy(filename, argv[1]);
-    filename = strcat(argv[1], ext);
+    filename = strcat(strcat(argv[1], mode), ext);
 
     FILE *dest = fopen(filename, "w");
 
