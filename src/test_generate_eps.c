@@ -15,10 +15,10 @@ int main(int argc, char *argv[]) {
     }
 
     if (fill) {
-        mode = "-fill";
+        mode = "_fill";
     }
     else {
-        mode = "-stroke";
+        mode = "_stroke";
     }
 
     Image I = lire_fichier_image(argv[1]);
