@@ -1,7 +1,7 @@
 #include "masque.h"
 #include "image.h"
 
-Image masque(Image I) {
+Image creer_masque(Image I) {
 	int L = largeur_image(I);
 	int H = hauteur_image(I);
 	Image m = creer_image(L, H);

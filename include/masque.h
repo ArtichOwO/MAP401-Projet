@@ -3,6 +3,6 @@
 
 #include "image.h"
 
-Image masque(Image I);
+Image creer_masque(Image I);
 
 #endif
