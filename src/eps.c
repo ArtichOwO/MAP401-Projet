@@ -4,7 +4,8 @@
 #include <stdio.h>
 
 void generate_eps(FILE * fd, Image I, bool fill) {
-	Liste contour = trouver_contour(I);
+	Liste contour; //trouver_contour(I);
+	// TODO: plusieurs contours
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
 		   "%%%%BoundingBox: 0 0 %i %i\n\n"

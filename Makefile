@@ -78,7 +78,7 @@ $(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
 $(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h
 
-$(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/image.h
+$(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/masque.h $(INCDIR)/image.h
 
 ########################################################
 # règles explicites de création des exécutables
@@ -88,7 +88,8 @@ test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o $(SRCDIR)/masque.o
 test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 
 test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
-	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o \
+	$(SRCDIR)/masque.o
 
 test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o\
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
