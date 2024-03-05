@@ -34,9 +34,12 @@ int main(int argc, char * argv[]) {
 			listes[nb_contours++] = trouver_contour(I, masque);
 	}
 
+	int somme = 0;
 	fprintf(fd, "%i\n\n", nb_contours);
 	for (int i = 0; i < nb_contours; i++) {
-		fprintf(fd, "%i\n", longueur_liste(listes[i])-1);
+		int longueur = longueur_liste(listes[i])-1;
+		somme += longueur;
+		fprintf(fd, "%i\n", longueur);
 		Cellule * c = listes[i].t;
 		while (c) {
 			fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
@@ -44,6 +47,9 @@ int main(int argc, char * argv[]) {
 		}
 		fprintf(fd, "\n");
 	}
+
+	printf("Nombre de contours : %i\n", nb_contours);
+	printf("Nombre de segments au total : %i\n", somme);
 
 	fclose(fd);
 
