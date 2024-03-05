@@ -36,11 +36,13 @@ int main(int argc, char * argv[]) {
 
 	fprintf(fd, "%i\n\n", nb_contours);
 	for (int i = 0; i < nb_contours; i++) {
+		fprintf(fd, "%i\n", longueur_liste(listes[i])-1);
 		Cellule * c = listes[i].t;
 		while (c) {
 			fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
 			c = c->n;
 		}
+		fprintf(fd, "\n");
 	}
 
 	fclose(fd);
