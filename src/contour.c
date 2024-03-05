@@ -113,9 +113,9 @@ Point trouver_pixel_depart(Image I) {
 	return P;
 }
 
-Liste trouver_contour(Image I) { // TODO: arg img masque + modif
+Liste trouver_contour(Image I, Image masque) { // TODO: arg img masque + modif
 	Liste L = { NULL };
-	Point depart = trouver_pixel_depart(I);
+	Point depart = trouver_pixel_depart(masque);
 
 	RobotContour rc = {
 		.pos = depart,
@@ -126,6 +126,7 @@ Liste trouver_contour(Image I) { // TODO: arg img masque + modif
 		memoriser_position(rc, &L);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
+		masque.pointeur_vers_le_tableau_de_pixels[rc.pos.x + rc.pos.y * I.la_largeur_de_l_image] = BLANC;
 
 		if (rc.pos.x == depart.x 
 			&& rc.pos.y == depart.y 
