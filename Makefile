@@ -83,7 +83,7 @@ $(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/image.h
 ########################################################
 # règles explicites de création des exécutables
 
-test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o
+test_image: $(SRCDIR)/test_image.o $(SRCDIR)/image.o $(SRCDIR)/masque.o
 
 test_geom2d: $(SRCDIR)/test_geom2d.o $(SRCDIR)/geom2d.o
 

@@ -2,6 +2,8 @@
 #include "image.h"
 #include <stdio.h>
 
+#include "masque.h"
+
 int main(int argc, char * argv[]) {
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
@@ -12,8 +14,10 @@ int main(int argc, char * argv[]) {
 
 	ecrire_image(im);
 	printf("\n");
+	ecrire_image(masque(im));
+	printf("\n");
 	ecrire_image(negatif_image(im));
 	printf("\n");
-
+	
 	return 0;
 }
