@@ -126,7 +126,9 @@ Liste trouver_contour(Image I, Image masque) {
 		memoriser_position(rc, &L);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
-		set_pixel_image(masque, rc.pos.x + 1, rc.pos.y + 1, BLANC);
+		if (rc.o == EST)
+			set_pixel_image(masque, 
+				rc.pos.x + 1, rc.pos.y + 1, BLANC);
 
 		if (rc.pos.x == depart.x 
 			&& rc.pos.y == depart.y 
