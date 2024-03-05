@@ -13,8 +13,6 @@ int main(int argc, char * argv[]) {
 	}
 
 	Image I = lire_fichier_image(argv[1]);
-	/*Liste L = trouver_contour(I);
-	printf("Nombre de segments : %i\n", longueur_liste(L) - 1);*/
 
 	char * ext = ".contours";
 	*strrchr(argv[1], '.') = 0;
@@ -23,7 +21,7 @@ int main(int argc, char * argv[]) {
 	filename = strcat(argv[1], ext);
 	FILE * fd = fopen(filename, "w");
 
-	Liste listes[512];
+	Liste listes[2048];
 	int nb_contours = 0;
 	Image masque = creer_masque(I);
 	int L = largeur_image(I);
