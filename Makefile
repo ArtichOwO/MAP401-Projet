@@ -76,7 +76,8 @@ $(SRCDIR)/test_generate_eps.o: $(SRCDIR)/test_generate_eps.c \
 
 $(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
-$(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h
+$(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h \
+	$(INCDIR)/masque.h
 
 $(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/masque.h $(INCDIR)/image.h
 
@@ -91,8 +92,8 @@ test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o \
 	$(SRCDIR)/masque.o
 
-test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o\
-	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o
+test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o \
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o
 
 # règle pour "nettoyer" le répertoire
 clean:
