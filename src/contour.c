@@ -113,7 +113,7 @@ Point trouver_pixel_depart(Image I) {
 	return P;
 }
 
-Liste trouver_contour(Image I) {
+Liste trouver_contour(Image I) { // TODO: arg img masque + modif
 	Liste L = { NULL };
 	Point depart = trouver_pixel_depart(I);
 
