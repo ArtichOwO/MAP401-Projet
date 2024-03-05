@@ -126,7 +126,7 @@ Liste trouver_contour(Image I, Image masque) { // TODO: arg img masque + modif
 		memoriser_position(rc, &L);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
-		masque.pointeur_vers_le_tableau_de_pixels[rc.pos.x + rc.pos.y * I.la_largeur_de_l_image] = BLANC;
+		set_pixel_image(masque, rc.pos.x + 1, rc.pos.y + 1, BLANC);
 
 		if (rc.pos.x == depart.x 
 			&& rc.pos.y == depart.y 
