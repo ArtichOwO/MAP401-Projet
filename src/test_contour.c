@@ -1,6 +1,7 @@
 #include "contour.h"
 #include "image.h"
 #include "liste.h"
+#include "masque.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,9 +13,8 @@ int main(int argc, char * argv[]) {
 	}
 
 	Image I = lire_fichier_image(argv[1]);
-	Liste L = trouver_contour(I);
-	imprimer_liste(L);
-	printf("Nombre de segments : %i\n", longueur_liste(L) - 1);
+	/*Liste L = trouver_contour(I);
+	printf("Nombre de segments : %i\n", longueur_liste(L) - 1);*/
 
 	char * ext = ".contours";
 	*strrchr(argv[1], '.') = 0;
@@ -23,12 +23,25 @@ int main(int argc, char * argv[]) {
 	filename = strcat(argv[1], ext);
 	FILE * fd = fopen(filename, "w");
 
-	fprintf(fd, "1\n\n%i\n", longueur_liste(L) - 1);
-	Cellule * c = L.t;
-	while (c) {
-		fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
-		c = c->n;
-	} // TODO: enregistrer tout les contours
+	Liste listes[512];
+	int nb_contours = 0;
+	Image masque = creer_masque(I);
+	int L = largeur_image(I);
+	int H = hauteur_image(I);
+
+	for (int i = 0; i < L * H; i++) {
+		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR)
+			listes[nb_contours++] = trouver_contour(I, masque);
+	}
+
+	fprintf(fd, "%i\n\n", nb_contours);
+	for (int i = 0; i < nb_contours; i++) {
+		Cellule * c = listes[i].t;
+		while (c) {
+			fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
+			c = c->n;
+		}
+	}
 
 	fclose(fd);
 
