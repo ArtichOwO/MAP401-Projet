@@ -1,3 +1,8 @@
-#include "image.h"
-#include "geom2d.h"
+#ifndef MASQUE_H
+#define MASQUE_H
 
+#include "image.h"
+
+Image masque(Image I);
+
+#endif
