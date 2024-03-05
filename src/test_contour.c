@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
 	while (c) {
 		fprintf(fd, " %.1lf %.1lf\n", c->p.x, c->p.y);
 		c = c->n;
-	}
+	} // TODO: enregistrer tout les contours
 
 	fclose(fd);
 
