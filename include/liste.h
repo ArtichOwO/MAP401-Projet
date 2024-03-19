@@ -25,7 +25,7 @@ typedef Point* Tableau_Points;
 int longueur_liste(Liste L);
 
 /* Concatène la liste L2 à l1 */
-void concatener_liste(Liste L1, Liste L2);
+Liste concatener_liste(Liste L1, Liste L2);
 
 /* Ajoute un element dans la liste */
 void ajouter_element_liste(Liste * L, Point e);
