@@ -18,7 +18,7 @@ double distance_ps(Point P, Point A, Point B) {
     else {
         Point Q = add_point(A, 
             produit_reel_point(
-                sub_point(A, B), lambda));
+                sub_point(B, A), lambda));
         return point_norme(Q, P);
     }
 }
@@ -48,12 +48,12 @@ int main(int argc, char *argv[]) {
 
 ### Jeu de tests
 
-A = (2, 3)
-B = (5, 5)
+A = (2, 3)  
+B = (5, 5)  
 
-P1 = (0, 3)
-P2 = (2, 6)
-P3 = (6, 7)
+P1 = (0, 3)  
+P2 = (2, 6)  
+P3 = (6, 7)  
 
 #### Avec Q ∉ S, Q du côté de A, λ < 0
 
