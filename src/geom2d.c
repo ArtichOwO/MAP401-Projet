@@ -20,11 +20,26 @@ Point add_point(Point P1, Point P2)
     return P;
 }
 
+Point sub_point(Point P1, Point P2)
+{
+    Point P = {P1.x - P2.x, P1.y - P2.y};
+    return P;
+}
+
 Vecteur add_vect(Vecteur A, Vecteur B)
 {
     Vecteur v = {
     	.x = A.x + B.x,
     	.y = A.y + B.y
+    };
+    return v;
+}
+
+Vecteur sub_vect(Vecteur A, Vecteur B)
+{
+    Vecteur v = {
+        .x = A.x - B.x,
+        .y = A.y - B.y
     };
     return v;
 }

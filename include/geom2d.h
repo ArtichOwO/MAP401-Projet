@@ -15,7 +15,10 @@ Point set_point(double x, double y);
 Vecteur set_vect(double x, double y);
 
 Point add_point(Point P1, Point P2);
+Point sub_point(Point P1, Point P2);
+
 Vecteur add_vect(Vecteur A, Vecteur B);
+Vecteur sub_vect(Vecteur A, Vecteur B);
 
 Point produit_reel_point(Point P, double l);
 Vecteur produit_reel_vecteur(Vecteur V, double l);
