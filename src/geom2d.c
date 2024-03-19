@@ -100,7 +100,7 @@ double distance_ps(Point P, Point A, Point B) {
     else {
         Point Q = add_point(A, 
             produit_reel_point(
-                sub_point(A, B), lambda));
+                sub_point(B, A), lambda));
         return point_norme(Q, P);
     }
 }
