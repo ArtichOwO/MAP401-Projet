@@ -33,4 +33,6 @@ double vect_norme(Vecteur V);
 void afficher_point(Point P);
 void afficher_vecteur(Vecteur V);
 
+double distance_ps(Point P, Point A, Point B);
+
 #endif

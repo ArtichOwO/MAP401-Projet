@@ -81,8 +81,6 @@ $(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h \
 
 $(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/masque.h $(INCDIR)/image.h
 
-$(SRCDIR)/simplification.o: $(SRCDIR)/distance_ps.c $(INCDIR)/simplification.h
-
 ########################################################
 # règles explicites de création des exécutables
 
