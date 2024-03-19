@@ -31,7 +31,6 @@ COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 # liste des exécutables
 EXECUTABLES = test_image test_geom2d test_contour test_generate_eps test_distance_ps
 
-
 #############################################################################
 # définition des règles
 #############################################################################
@@ -82,6 +81,9 @@ $(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h \
 $(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/masque.h $(INCDIR)/image.h
 
 $(SRCDIR)/test_distance_ps.o: $(SRCDIR)/test_distance_ps.c $(INCDIR)/geom2d.h
+
+$(SRCDIR)/simplification.o: $(SRCDIR)/simplification.c $(INCDIR)/simplification.h \
+	$(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
 ########################################################
 # règles explicites de création des exécutables
