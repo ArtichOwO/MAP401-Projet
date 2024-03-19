@@ -24,6 +24,9 @@ typedef Point* Tableau_Points;
 /* Renvoie la longueur */
 int longueur_liste(Liste L);
 
+/* Renvoie un pointeur vers la derniere cellule de la liste */
+Cellule *dernier_element(Liste L);
+
 /* Concatène la liste L2 à l1 */
 Liste concatener_liste(Liste L1, Liste L2);
 

@@ -14,6 +14,10 @@ int longueur_liste(Liste L) {
     return longueur;
 }
 
+Liste concatener_liste(Liste L1, Liste L2) {
+    
+}
+
 void ajouter_element_liste(Liste * L, Point e) {
     Cellule *current = L->t;
     Cellule *c = malloc(sizeof(Cellule));
