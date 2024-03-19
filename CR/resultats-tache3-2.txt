@@ -1,11 +1,35 @@
-personnage.pbm
-dimensions : 10x10
-segments : 32
+chat.pbm
+dimensions : 250x140
+segments : 880
 
-testimage.pbm
+coq.pbm
+dimensions : 700x720
+segments : 5386
+
+elephant.pbm
+dimensions : 800x700
+segments : 5344
+
+gymnaste.pbm
+dimensions : 1056x1647
+segments : 8784
+
+image_ex_poly.pbm
 dimensions : 4x4
 segments : 18
 
-testimage2.pbm
-dimensions : 6x3
-segments : 22
+labyrinthe.pbm
+dimensions : 221x201
+segments : 44000
+
+lettreZ.pbm
+dimensions : 600x1029
+segments : 9396
+
+map401.pbm
+dimensions : 830x300
+segments : 8072
+
+tete.pbm
+dimensions : 1252x1252
+segments : 8136
