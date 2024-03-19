@@ -31,26 +31,20 @@ Liste concatener_liste(Liste L1, Liste L2) {
     return L1;
 }
 
-void free_liste(Liste L) {
-    Cellule *cell = L.t;
-    Cellule *back = L.t;
+void free_liste(Liste * L) {
+    Cellule *cell;
+    Cellule *back = L->t;
 
-    // init cell
-    if (cell) {
-        cell = cell->n;
-        back = cell->n;
-    }
+    if (!back) return;
 
+    cell = back->n;
     while (cell->n) {
-        cell = cell->n;
-        free(*back);
+        free(back);
         back = cell;
+        cell = cell->n;
     }
-    free(*cell);
     free(cell);
-    free(back);
-
-    L.t = NULL;
+    L->t = NULL;
 }
 
 void ajouter_element_liste(Liste * L, Point e) {
