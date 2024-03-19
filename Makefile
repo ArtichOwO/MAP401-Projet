@@ -29,7 +29,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
 # liste des exécutables
-EXECUTABLES = test_image test_geom2d test_contour test_generate_eps
+EXECUTABLES = test_image test_geom2d test_contour test_generate_eps test_distance_ps
 
 
 #############################################################################
@@ -81,6 +81,8 @@ $(SRCDIR)/eps.o: $(SRCDIR)/eps.c $(INCDIR)/liste.h $(INCDIR)/contour.h \
 
 $(SRCDIR)/masque.o: $(SRCDIR)/masque.c $(INCDIR)/masque.h $(INCDIR)/image.h
 
+$(SRCDIR)/test_distance_ps.o: $(SRCDIR)/test_distance_ps.c $(INCDIR)/geom2d.h
+
 ########################################################
 # règles explicites de création des exécutables
 
@@ -94,6 +96,8 @@ test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
 
 test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o \
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o
+
+test_distance_ps: $(SRCDIR)/test_distance_ps.o $(SRCDIR)/geom2d.o
 
 # règle pour "nettoyer" le répertoire
 clean:
