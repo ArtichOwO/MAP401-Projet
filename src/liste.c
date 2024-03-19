@@ -40,6 +40,17 @@ void free_liste(Liste L) {
         cell = cell->n;
         back = cell->n;
     }
+
+    while (cell->n) {
+        cell = cell->n;
+        free(*back);
+        back = cell;
+    }
+    free(*cell);
+    free(cell);
+    free(back);
+
+    L.t = NULL;
 }
 
 void ajouter_element_liste(Liste * L, Point e) {
