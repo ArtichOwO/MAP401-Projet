@@ -30,6 +30,12 @@ Cellule *dernier_element(Liste L);
 /* Concatène la liste L2 à l1 */
 Liste concatener_liste(Liste L1, Liste L2);
 
+/* 
+    Libere les cellules de la liste
+    La liste L.t = NULL après execution
+*/
+void free_liste(Liste *L);
+
 /* Ajoute un element dans la liste */
 void ajouter_element_liste(Liste * L, Point e);
 
