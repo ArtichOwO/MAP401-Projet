@@ -18,11 +18,12 @@ Cellule *dernier_element(Liste L) {
     Cellule *cell = L.t;
 
     if (!(cell->n))
-        return NULL;
+        return cell;
 
     while (cell->n) {
         cell = cell->n;
     }
+
     return cell;
 }
 
@@ -62,6 +63,11 @@ void ajouter_element_liste(Liste * L, Point e) {
 
 void imprimer_liste(Liste L) {
     Cellule *current = L.t;
+
+    if (!(L.t)) {
+        printf("NULL\n");
+        return;
+    }
 
     while (current) {
         afficher_point(current->p);

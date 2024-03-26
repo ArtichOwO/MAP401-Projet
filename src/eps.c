@@ -14,8 +14,10 @@ void generate_eps(FILE * fd, Image I, bool fill) {
 	int H = hauteur_image(I);
 
 	for (int i = 0; i < L * H; i++) {
-		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR)
-			contours[nb_contours++] = douglas_peucker(trouver_contour(I, masque), 2);
+		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
+			Liste contour = trouver_contour(I, masque);
+			contours[nb_contours++] = *douglas_peucker(&contour, 5);
+		}
 	}
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"

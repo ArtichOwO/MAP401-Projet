@@ -3,6 +3,6 @@
 
 #include "liste.h"
 
-Liste douglas_peucker(Liste L, double d);
+Liste * douglas_peucker(Liste * L, double d);
 
 #endif
