@@ -90,6 +90,10 @@ void afficher_vecteur(Vecteur V)
 double distance_ps(Point P, Point A, Point B) {
     Vecteur AP = vect_bipoint(A, P);
     Vecteur AB = vect_bipoint(A, B);
+
+    if (A.x == B.x && A.y == B.y)
+        return point_norme(A, P);
+
     double lambda = produit_scalaire(AP, AB) 
                   / produit_scalaire(AB, AB);
 
