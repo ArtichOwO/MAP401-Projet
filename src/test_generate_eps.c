@@ -6,12 +6,15 @@
 int main(int argc, char *argv[]) {
     bool fill = false;
     char *mode = malloc(8);
+    double d = 5;
 
-    if (argc < 2 || argc > 3) {
+    if (argc < 2 || argc > 4) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
-    } else if (argc == 3 ) {
+    } else if (argc == 3) {
         if (!strcmp(argv[2], "fill")) fill = true;
+    } else if (argc == 4) {
+        d = atoi(argv[3]);
     }
 
     if (fill) {
@@ -32,7 +35,7 @@ int main(int argc, char *argv[]) {
 
     FILE *dest = fopen(filename, "w");
 
-    generate_eps(dest, I, fill);
+    generate_eps(dest, I, fill, d);
     fclose(dest);
     
     return 0;

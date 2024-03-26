@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void generate_eps(FILE * fd, Image I, bool fill) {
+void generate_eps(FILE * fd, Image I, bool fill, double d) {
 	Liste contours[2048];
 	int nb_contours = 0;
 	Image masque = creer_masque(I);
@@ -16,7 +16,7 @@ void generate_eps(FILE * fd, Image I, bool fill) {
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
 			Liste contour = trouver_contour(I, masque);
-			contours[nb_contours++] = *douglas_peucker(&contour, 5);
+			contours[nb_contours++] = *douglas_peucker(&contour, d);
 		}
 	}
 
