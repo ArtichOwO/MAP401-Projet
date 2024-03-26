@@ -97,7 +97,8 @@ test_contour: $(SRCDIR)/test_contour.o $(SRCDIR)/image.o \
 	$(SRCDIR)/masque.o
 
 test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps.o \
-	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o
+	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o \
+	$(SRCDIR)/simplification.o
 
 test_distance_ps: $(SRCDIR)/test_distance_ps.o $(SRCDIR)/geom2d.o
 
