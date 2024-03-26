@@ -17,8 +17,8 @@ int longueur_liste(Liste L) {
 Cellule *dernier_element(Liste L) {
     Cellule *cell = L.t;
 
-    if (!(cell->n))
-        return NULL;
+    if (!(cell))
+        return cell;
 
     while (cell->n) {
         cell = cell->n;
