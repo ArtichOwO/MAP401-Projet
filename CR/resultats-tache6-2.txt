@@ -1,0 +1,41 @@
+image_poly_tache6.pbm
+dimensions : 50x50
+contours : 3
+segments (init) : 488
+segments (d=1) : 71
+segments (d=2) : 47
+
+elephant-gotlib.pbm
+dimensions : 1350x2000
+contours : 313
+segments (init) : 115564
+segments (d=1) : 13502
+segments (d=2) : 4594
+
+goudyini-A.pbm
+dimensions : 1000x1000
+contours : 258
+segments (init) : 73444
+segments (d=1) : 5593
+segments (d=2) : 2971
+
+JoaquimHock-LesArbres.pbm
+dimensions : 1500x2100
+contours : 543
+segments (init) : 231284
+segments (d=1) : 27115
+segments (d=2) : 13633
+
+cheval.pbm
+dimensions : 2000x1500
+contours : 59
+segments (init) : 32002
+segments (d=1) : 3216
+segments (d=2) : 1440
+
+papillon2.pbm
+dimensions : 1122x417
+contours : 140
+segments (init) : 18212
+segments (d=1) : 2053
+segments (d=2) : 1177
