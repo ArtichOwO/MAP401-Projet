@@ -8,12 +8,18 @@ int main(int argc, char *argv[]) {
     char *mode = malloc(8);
     double d = 5;
 
+    
+
     if (argc < 2 || argc > 4) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
-    } else if (argc == 3) {
-        if (!strcmp(argv[2], "fill")) fill = true;
-    } else if (argc == 4) {
+    }
+    
+    if (argc > 2) {
+        fill = !strcmp(argv[2], "fill");
+    }
+
+    if (argc == 4) {
         d = atoi(argv[3]);
     }
 
@@ -31,7 +37,8 @@ int main(int argc, char *argv[]) {
     *strrchr(argv[1], '.') = 0;
     char *filename = malloc(strlen(argv[1]) + strlen(ext));
     strcpy(filename, argv[1]);
-    filename = strcat(strcat(argv[1], mode), ext);
+
+    filename = strcat(strcat(strcat(argv[1], mode), argv[3]), ext);
 
     FILE *dest = fopen(filename, "w");
 
