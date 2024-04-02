@@ -8,8 +8,6 @@ int main(int argc, char *argv[]) {
     char *mode = malloc(8);
     double d = 5;
 
-    
-
     if (argc < 2 || argc > 4) {
         fprintf(stderr, "Usage : %s <image>\n", argv[0]);
         return 1;
