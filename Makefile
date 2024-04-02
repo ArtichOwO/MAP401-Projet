@@ -85,6 +85,8 @@ $(SRCDIR)/test_distance_ps.o: $(SRCDIR)/test_distance_ps.c $(INCDIR)/geom2d.h
 $(SRCDIR)/simplification.o: $(SRCDIR)/simplification.c $(INCDIR)/simplification.h \
 	$(INCDIR)/liste.h $(INCDIR)/geom2d.h
 
+$(SRCDIR)/bezier.o: $(SRCDIR)/bezier.c $(INCDIR)/bezier.h $(INCDIR)/geom2d.h
+
 ########################################################
 # règles explicites de création des exécutables
 
