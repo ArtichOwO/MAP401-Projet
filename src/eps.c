@@ -21,7 +21,7 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 			somme += longueur_liste(contours[nb_contours-1]);
 		}
 	}
-	printf("segments : %i\n", somme);
+	printf("segments : %i\n", somme+1);
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
 		   "%%%%BoundingBox: 0 0 %i %i\n\n"
