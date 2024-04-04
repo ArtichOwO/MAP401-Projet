@@ -2,6 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
+Point origin = { 0, 0 };
+
 Point set_point(double x, double y)
 {
     Point P = {x ,y};

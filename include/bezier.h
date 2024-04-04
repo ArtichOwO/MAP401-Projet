@@ -2,6 +2,7 @@
 #define BEZIER_H
 
 #include "geom2d.h"
+#include "liste.h"
 
 typedef struct {
 	Point C0;
@@ -20,5 +21,7 @@ Point CalculBezier2(Bezier2 B, double t);
 Point CalculBezier3(Bezier3 B, double t);
 
 Bezier3 Bezier2to3(Bezier2 B);
+
+Bezier2 approx_bezier2(Liste L);
 
 #endif

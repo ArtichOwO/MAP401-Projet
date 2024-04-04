@@ -11,6 +11,8 @@ typedef struct Point_
     double x, y; /* Coordonnées */
 } Point;
 
+Point origin;
+
 Point set_point(double x, double y);
 Vecteur set_vect(double x, double y);
 

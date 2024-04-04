@@ -1,5 +1,7 @@
 #include "bezier.h"
 #include "geom2d.h"
+#include "liste.h"
+#include <iso646.h>
 #include <math.h>
 
 Point CalculBezier2(Bezier2 B, double t) {
@@ -35,4 +37,45 @@ Bezier3 Bezier2to3(Bezier2 B) {
 	};
 
 	return B3;
-};
+}
+
+Bezier2 approx_bezier2(Liste L) {
+	Bezier2 B = { 
+		origin,
+		origin,
+		origin
+	};
+	int n = longueur_liste(L)-1;
+
+	if (n == 1) {
+		B.C0 = L.t->p;
+		B.C1 = produit_reel_point(
+			add_point(L.t->p, L.t->n->p), 
+			1.0f/2.0f);
+		B.C2 = L.t->n->p;
+	} else if (n >= 2) {
+		double alpha = 3*n / (pow(n, 2) - 1);
+		double beta = (1.0f - 2*n) / 2*(n + 1);
+		Point sum = origin;
+
+		Cellule * current = L.t->n;
+		while (current->n->n) {
+			sum = add_point(sum, current->p);
+			current = current->n;
+		}
+
+		Point C0 = L.t->p;
+		Point C2 = dernier_element(L)->p;
+
+		B.C0 = L.t->p;
+		B.C1 = add_point(
+			produit_reel_point(sum, alpha), 
+			produit_reel_point(add_point(
+				L.t->p, 
+				dernier_element(L)->p), 
+			beta));
+		B.C2 = dernier_element(L)->p;
+	}
+
+	return B;
+}
