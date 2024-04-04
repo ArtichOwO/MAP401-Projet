@@ -64,17 +64,16 @@ Bezier2 approx_bezier2(Liste L) {
 			current = current->n;
 		}
 
-		Point C0 = L.t->p;
-		Point C2 = dernier_element(L)->p;
+		Point Pj1 = L.t->p;
+		Point Pj2 = dernier_element(L)->p;
 
-		B.C0 = L.t->p;
+		B.C0 = Pj1;
 		B.C1 = add_point(
 			produit_reel_point(sum, alpha), 
 			produit_reel_point(add_point(
-				L.t->p, 
-				dernier_element(L)->p), 
+				Pj1, Pj2), 
 			beta));
-		B.C2 = dernier_element(L)->p;
+		B.C2 = Pj2;
 	}
 
 	return B;
