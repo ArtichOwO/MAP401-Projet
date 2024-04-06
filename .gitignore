@@ -27,6 +27,7 @@ test_geom2d
 test_contour
 test_generate_eps
 test_distance_ps
+test_bezier
 
 *.exe
 *.out

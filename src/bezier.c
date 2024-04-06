@@ -3,6 +3,7 @@
 #include "liste.h"
 #include <iso646.h>
 #include <math.h>
+#include <stdio.h>
 
 Point CalculBezier2(Bezier2 B, double t) {
 	return add_point(
@@ -55,13 +56,13 @@ Bezier2 approx_bezier2(Liste L) {
 		B.C2 = L.t->n->p;
 	} else if (n >= 2) {
 		double alpha = 3*n / (pow(n, 2) - 1);
-		double beta = (1.0f - 2*n) / 2*(n + 1);
+		double beta = (1.0f - 2*n) / (2*(n + 1));
 		Point sum = origin;
 
-		Cellule * current = L.t->n;
+		Cellule * current = L.t;
 		while (current->n->n) {
-			sum = add_point(sum, current->p);
 			current = current->n;
+			sum = add_point(sum, current->p);
 		}
 
 		Point Pj1 = L.t->p;
@@ -70,11 +71,23 @@ Bezier2 approx_bezier2(Liste L) {
 		B.C0 = Pj1;
 		B.C1 = add_point(
 			produit_reel_point(sum, alpha), 
-			produit_reel_point(add_point(
-				Pj1, Pj2), 
-			beta));
+			produit_reel_point(
+				add_point(
+					Pj1, 
+					Pj2), 
+				beta));
 		B.C2 = Pj2;
 	}
 
 	return B;
+}
+
+void print_bezier2(Bezier2 B) {
+	printf("{ ");
+	afficher_point(B.C0);
+	printf(" ");
+	afficher_point(B.C1);
+	printf(" ");
+	afficher_point(B.C2);
+	printf(" }");
 }

@@ -24,4 +24,6 @@ Bezier3 Bezier2to3(Bezier2 B);
 
 Bezier2 approx_bezier2(Liste L);
 
+void print_bezier2(Bezier2 B);
+
 #endif
