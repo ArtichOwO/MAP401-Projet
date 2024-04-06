@@ -1,4 +1,5 @@
 #include "simplification.h"
+#include "bezier.h"
 #include "liste.h"
 #include "geom2d.h"
 #include <stdio.h>
@@ -38,4 +39,42 @@ Liste * douglas_peucker(Liste * L, double d) {
 	}
 
 	return L;
+}
+
+Liste * douglas_peucker_b2(Liste * L, double d) {
+	int n = longueur_liste(*L) - 1;
+	Bezier2 B2 = approx_bezier2(*L);
+
+	Cellule * Pk_1 = L->t; // P_{k-1}
+	double dmax = 0;
+	int k = 0;
+	for (int i = 1; i < n+1; i++) {
+		double ti = (double) i / n;
+		double di = distance_point_bezier2(B2, Pk_1->n->p, ti);
+		if (dmax < di) {
+			dmax = di;
+			k = i;
+		}
+		Pk_1 = Pk_1->n;
+	}
+
+	if (dmax <= d) {
+		// L = B2
+	} else {
+		Liste * C1 = L;
+		Liste L_C2 = { Pk_1->n };
+		Liste * C2 = &L_C2;
+		Point Pk_p = Pk_1->n->p;
+		Pk_1->n = NULL;
+
+		// L1 = douglas_peucker_b2(C1, d);
+		// L2 = douglas_peucker_b2(C2, d);
+		// dernier_element(*L1)->n = L2->t;
+		// L = L1
+	}
+
+	Point A = L->t->p;
+	Point B = dernier_element(*L)->p;
+
+	//return L;
 }
