@@ -81,12 +81,12 @@ double vect_norme(Vecteur V) {
 
 void afficher_point(Point P)
 {
-    printf("(%.0lf, %.0lf)", P.x, P.y);
+    printf("(%lf, %lf)", P.x, P.y);
 }
 
 void afficher_vecteur(Vecteur V)
 {
-    printf("(%.0lf, %.0lf)", V.x, V.y);
+    printf("(%lf, %lf)", V.x, V.y);
 }
 
 double distance_ps(Point P, Point A, Point B) {
