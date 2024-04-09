@@ -95,3 +95,15 @@ void print_bezier2(Bezier2 B) {
 	afficher_point(B.C2);
 	printf(" }");
 }
+
+void print_bezier3(Bezier3 B) {
+	printf("{ ");
+	afficher_point(B.C0);
+	printf(" ");
+	afficher_point(B.C1);
+	printf(" ");
+	afficher_point(B.C2);
+	printf(" ");
+	afficher_point(B.C3);
+	printf(" }");
+}
