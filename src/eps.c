@@ -29,12 +29,14 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 		   "0 0 0 setrgbcolor 0.0 setlinewidth\n\n",
 		   I.la_largeur_de_l_image, I.la_hauteur_de_l_image);
 
+	int somme_courbes = 0;
 	for (int i = 0; i < nb_contours; i++) {
 		Cellule * c = contours[i].t;
 
 		fprintf(fd, "%.0lf %.0lf moveto\n", c->p.x,
 			I.la_hauteur_de_l_image - c->p.y);
 		while (c->n) {
+			somme_courbes++;
 			Bezier2 B2 = {
 				.C0 = c->p,
 				.C1 = c->n->p,
@@ -49,6 +51,7 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 		}
 		fprintf(fd, "\n");
 	}
+	printf("courbes : %i\n", somme_courbes);
 
 	fprintf(fd, "\n%s\n\n"
 			"showpage\n",
