@@ -1,4 +1,5 @@
 #include "eps.h"
+#include "bezier.h"
 #include "contour.h"
 #include "liste.h"
 #include "masque.h"
@@ -17,7 +18,7 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
 			Liste contour = trouver_contour(I, masque);
-			contours[nb_contours++] = *douglas_peucker(&contour, d);
+			contours[nb_contours++] = *douglas_peucker_b2(&contour, d);
 			somme += longueur_liste(contours[nb_contours-1]);
 		}
 	}
@@ -30,12 +31,21 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 
 	for (int i = 0; i < nb_contours; i++) {
 		Cellule * c = contours[i].t;
+
 		fprintf(fd, "%.0lf %.0lf moveto\n", c->p.x,
 			I.la_hauteur_de_l_image - c->p.y);
 		while (c->n) {
-			fprintf(fd, "%.0lf %.0lf lineto\n", c->n->p.x,
-				I.la_hauteur_de_l_image - c->n->p.y);
-			c = c->n;
+			Bezier2 B2 = {
+				.C0 = c->p,
+				.C1 = c->n->p,
+				.C2 = c->n->n->p
+			};
+			Bezier3 B3 = Bezier2to3(B2);
+			fprintf(fd, "%lf %lf  %lf %lf  %.0lf %.0lf curveto\n", 
+				B3.C1.x, I.la_hauteur_de_l_image - B3.C1.y,
+				B3.C2.x, I.la_hauteur_de_l_image - B3.C2.y,
+				B3.C3.x, I.la_hauteur_de_l_image - B3.C3.y);
+			c = c->n->n;
 		}
 		fprintf(fd, "\n");
 	}
