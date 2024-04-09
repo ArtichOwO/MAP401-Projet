@@ -42,9 +42,9 @@ Bezier3 Bezier2to3(Bezier2 B) {
 
 Bezier2 approx_bezier2(Liste L) {
 	Bezier2 B = { 
-		origin,
-		origin,
-		origin
+		pzero,
+		pzero,
+		pzero
 	};
 	int n = longueur_liste(L)-1;
 
@@ -57,7 +57,7 @@ Bezier2 approx_bezier2(Liste L) {
 	} else if (n >= 2) {
 		double alpha = 3*n / (pow(n, 2) - 1);
 		double beta = (1.0f - 2*n) / (2*(n + 1));
-		Point sum = origin;
+		Point sum = pzero;
 
 		Cellule * current = L.t;
 		while (current->n->n) {
