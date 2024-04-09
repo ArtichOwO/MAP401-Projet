@@ -41,6 +41,8 @@ Bezier3 Bezier2to3(Bezier2 B) {
 }
 
 Bezier2 approx_bezier2(Liste L) {
+	Point pzero = { 0, 0 };
+	
 	Bezier2 B = { 
 		pzero,
 		pzero,
