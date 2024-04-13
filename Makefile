@@ -26,7 +26,7 @@ LDOPTS = -L$(LIBDIR) -lm
 INCLUDEOPTS = -I$(INCDIR)
 
 # options de compilation
-COMPILOPTS = -g -Wall $(INCLUDEOPTS)
+COMPILOPTS = -g -Wall -Werror $(INCLUDEOPTS)
 
 # liste des exécutables
 EXECUTABLES = test_image test_geom2d test_contour test_generate_eps \
