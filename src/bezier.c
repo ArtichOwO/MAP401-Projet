@@ -100,9 +100,6 @@ Bezier3 approx_bezier3(Liste L) {
 					/ (3*(n + 2)*(3*pow(n, 2) + 1));
 		double lambda = (70.0*n)
 					  / (3*(pow(n, 2) - 1)*(pow(n, 2) - 4)*(3*pow(n, 2) + 1));
-
-		printf("n=%i, A=%lf, B=%lf, L=%lf\n", n, alpha, beta, lambda);
-
 		Point sum1 = { 0, 0 };
 		Point sum2 = { 0, 0 };
 
