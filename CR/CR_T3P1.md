@@ -4,7 +4,7 @@
 
 ***
 
-![testimage](testimage.png)
+![testimage](img_t3p1/testimage.png)
 ```pbm
 P1
 4 4
@@ -37,7 +37,7 @@ $ ./test_contour testimage.pbm
 
 ***
 
-![personnage](personnage.png)
+![personnage](img_t3p1/personnage.png)
 ```pbm
 P1
 10 10
@@ -90,7 +90,7 @@ $ ./test_contour personnage.pbm
 
 ***
 
-![testimage2](testimage2.png)
+![testimage2](img_t3p1/testimage2.png)
 ```pbm
 P1
 6 3

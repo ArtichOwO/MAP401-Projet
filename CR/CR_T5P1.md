@@ -107,7 +107,7 @@
 
 ***
 
-![personnage](personnage.png)
+![personnage](img_t5p1/personnage.png)
 ```pbm
 P1
 10 10
@@ -215,7 +215,7 @@ P1
 
 ***
 
-![testimage3](testimage3.png)
+![testimage3](img_t5p1/testimage3.png)
 ```pbm
 P1
 7 4
