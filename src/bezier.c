@@ -147,6 +147,10 @@ double distance_point_bezier2(Bezier2 B, Point Pj, double ti) {
 	return point_norme(Pj, CalculBezier2(B, ti));
 }
 
+double distance_point_bezier3(Bezier3 B, Point Pj, double ti) {
+	return point_norme(Pj, CalculBezier3(B, ti));
+}
+
 void print_bezier2(Bezier2 B) {
 	printf("{ ");
 	afficher_point(B.C0);

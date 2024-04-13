@@ -26,6 +26,7 @@ Bezier2 approx_bezier2(Liste L);
 Bezier3 approx_bezier3(Liste L);
 
 double distance_point_bezier2(Bezier2 B, Point Pj, double ti);
+double distance_point_bezier3(Bezier3 B, Point Pj, double ti);
 
 void print_bezier2(Bezier2 B);
 void print_bezier3(Bezier3 B);
