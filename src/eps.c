@@ -56,7 +56,7 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
 			Liste contour = trouver_contour(I, masque);
-			contours[nb_contours++] = *douglas_peucker_b2(&contour, d);
+			contours[nb_contours++] = *douglas_peucker_b3(&contour, d);
 			somme += longueur_liste(contours[nb_contours-1]);
 		}
 	}
@@ -75,17 +75,17 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 			I.la_hauteur_de_l_image - c->p.y);
 		while (c->n) {
 			somme_courbes++;
-			Bezier2 B2 = {
+			Bezier3 B3 = {
 				.C0 = c->p,
 				.C1 = c->n->p,
-				.C2 = c->n->n->p
+				.C2 = c->n->n->p,
+				.C3 = c->n->n->n->p
 			};
-			Bezier3 B3 = Bezier2to3(B2);
 			fprintf(fd, "%lf %lf  %lf %lf  %.0lf %.0lf curveto\n", 
 				B3.C1.x, I.la_hauteur_de_l_image - B3.C1.y,
 				B3.C2.x, I.la_hauteur_de_l_image - B3.C2.y,
 				B3.C3.x, I.la_hauteur_de_l_image - B3.C3.y);
-			c = c->n->n;
+			c = c->n->n->n;
 		}
 		fprintf(fd, "\n");
 	}
