@@ -50,7 +50,7 @@ Bezier2 approx_bezier2(Liste L) {
 			add_point(L.t->p, L.t->n->p), 
 			1.0f/2.0f);
 		B.C2 = L.t->n->p;
-	} else if (n >= 2) {
+	} else {
 		double alpha = 3*n / (pow(n, 2) - 1);
 		double beta = (1.0f - 2*n) / (2*(n + 1));
 		Point sum = { 0, 0 };
@@ -93,7 +93,7 @@ Bezier3 approx_bezier3(Liste L) {
 
 	if (n < 3)
 		B = Bezier2to3(approx_bezier2(L));
-	else if (n >= 3) {
+	else {
 		double alpha = (-15*pow(n, 3) + 5*pow(n, 2) + 2*n + 4)
 					 / (3*(n + 2)*(3*pow(n, 2) + 1));
 		double beta = (10*pow(n, 3) - 15*pow(n, 2) + n + 2)
