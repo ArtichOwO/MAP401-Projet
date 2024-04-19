@@ -17,8 +17,10 @@ char * orientation_to_string(Orientation o) {
 	}
 }
 
-static inline void memoriser_position(RobotContour rc, Liste * ListePos) {
-	ajouter_element_liste(ListePos, rc.pos);
+static inline void memoriser_position(RobotContour rc, Cellule * current) {
+	Cellule * c = malloc(sizeof(Cellule));
+	c->p = rc.pos;
+	current->n = c;
 }
 
 static inline void tourner_gauche(RobotContour * rc) {
@@ -41,19 +43,17 @@ static inline void avancer(RobotContour * rc) {
 static inline void nouvelle_orientation(Image I, RobotContour * rc) {
 	Pixel G = get_pixel_image(I, rc->pos.x + (rc->o == SUD || rc->o == EST), 
 								 rc->pos.y + (rc->o == SUD || rc->o == OUEST));
+	if (G == NOIR) tourner_gauche(rc);
+	
 	Pixel D = get_pixel_image(I, rc->pos.x + (rc->o == NORD || rc->o == EST),
 								 rc->pos.y + (rc->o == SUD || rc->o == EST));
-
-	if (G == NOIR)
-		tourner_gauche(rc);
-	else if (D == BLANC)
-		tourner_droite(rc);
+	if (D == BLANC) tourner_droite(rc);
 }
 
 Point trouver_pixel_depart(Image I) {
 	int L = largeur_image(I);
 	int H = hauteur_image(I);
-	Point P = {0, 0};
+	Point P = { 0, 0 };
 
 	for (int i = 0; i < L * H; i++)
 		if (get_pixel_image(I, i%L + 1, i/L) == BLANC
@@ -74,13 +74,18 @@ Liste trouver_contour(Image I, Image masque, Point depart) {
 		.o = EST
 	};
 
+	ajouter_element_liste(&L, rc.pos);
+	Cellule * current = L.t;
+
 	do {
-		memoriser_position(rc, &L);
 		avancer(&rc);
 		nouvelle_orientation(I, &rc);
 		if (rc.o == EST)
 			set_pixel_image(masque, 
 				rc.pos.x + 1, rc.pos.y + 1, BLANC);
+
+		memoriser_position(rc, current);
+		current = current->n;
 
 		if (rc.pos.x == depart.x 
 			&& rc.pos.y == depart.y 
@@ -88,6 +93,6 @@ Liste trouver_contour(Image I, Image masque, Point depart) {
 			break;
 	} while (true);
 
-	memoriser_position(rc, &L);
+	memoriser_position(rc, current);
 	return L;
 }
