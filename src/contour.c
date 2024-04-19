@@ -22,51 +22,20 @@ static inline void memoriser_position(RobotContour rc, Liste * ListePos) {
 }
 
 static inline void tourner_gauche(RobotContour * rc) {
-	switch (rc->o) {
-		case NORD:
-			rc->o = OUEST;
-			break;
-		case SUD:
-			rc->o = EST;
-			break;
-		case EST:
-			rc->o = NORD;
-			break;
-		case OUEST:
-			rc->o = SUD;
-	}
+	rc->o = (rc->o - 1) % 4;
+	if (rc->o < 0) rc->o += 4;
 }
 
 static inline void tourner_droite(RobotContour * rc) {
-	switch (rc->o) {
-		case NORD:
-			rc->o = EST;
-			break;
-		case SUD:
-			rc->o = OUEST;
-			break;
-		case EST:
-			rc->o = SUD;
-			break;
-		case OUEST:
-			rc->o = NORD;
-	}
+	rc->o = (rc->o + 1) % 4;
+	if (rc->o < 0) rc->o += 4;
 }
 
 static inline void avancer(RobotContour * rc) {
-	switch (rc->o) {
-		case NORD:
-			rc->pos.y--;
-			break;
-		case SUD:
-			rc->pos.y++;
-			break;
-		case EST:
-			rc->pos.x++;
-			break;
-		case OUEST:
-			rc->pos.x--;
-	}
+	if (rc->o % 2) // NS || EO
+		rc->pos.x += rc->o-1 ? -1 : 1; // O || E
+	else
+		rc->pos.y += rc->o ? 1 : -1; // S || N
 }
 
 static inline void nouvelle_orientation(Image I, RobotContour * rc) {

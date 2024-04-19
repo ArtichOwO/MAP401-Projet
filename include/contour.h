@@ -6,7 +6,7 @@
 #include "liste.h"
 
 typedef enum {
-	NORD, SUD, EST, OUEST
+	NORD = 0, EST, SUD, OUEST
 } Orientation;
 
 typedef struct {

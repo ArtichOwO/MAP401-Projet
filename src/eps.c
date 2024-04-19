@@ -15,14 +15,16 @@ void generate_eps_seg(FILE * fd, Image I, bool fill, double d) {
 	int H = hauteur_image(I);
 	int somme = 0;
 
-	for (int i = 0; i < L * H; i++) {
+	for (int i = 0; i < L * H; i++)
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
+			printf("%i: début contour\n", i);
 			Point depart = { i%L, i/L };
 			Liste contour = trouver_contour(I, masque, depart);
+			printf("%i: fin contour\n", i);
 			contours[nb_contours++] = *douglas_peucker(&contour, d);
 			somme += longueur_liste(contours[nb_contours-1]);
+			printf("%i: fin simplification\n", i);
 		}
-	}
 	printf("segments : %i\n", somme+1);
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
@@ -54,13 +56,12 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 	int L = largeur_image(I);
 	int H = hauteur_image(I);
 
-	for (int i = 0; i < L * H; i++) {
+	for (int i = 0; i < L * H; i++)
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
 			Point depart = { i%L, i/L };
 			Liste contour = trouver_contour(I, masque, depart);
 			contours[nb_contours++] = *douglas_peucker_b3(&contour, d);
 		}
-	}
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
 		   "%%%%BoundingBox: 0 0 %i %i\n\n"
