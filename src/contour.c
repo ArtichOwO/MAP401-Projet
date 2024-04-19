@@ -17,11 +17,11 @@ char * orientation_to_string(Orientation o) {
 	}
 }
 
-void memoriser_position(RobotContour rc, Liste * ListePos) {
+static inline void memoriser_position(RobotContour rc, Liste * ListePos) {
 	ajouter_element_liste(ListePos, rc.pos);
 }
 
-void tourner_gauche(RobotContour * rc) {
+static inline void tourner_gauche(RobotContour * rc) {
 	switch (rc->o) {
 		case NORD:
 			rc->o = OUEST;
@@ -37,7 +37,7 @@ void tourner_gauche(RobotContour * rc) {
 	}
 }
 
-void tourner_droite(RobotContour * rc) {
+static inline void tourner_droite(RobotContour * rc) {
 	switch (rc->o) {
 		case NORD:
 			rc->o = EST;
@@ -53,7 +53,7 @@ void tourner_droite(RobotContour * rc) {
 	}
 }
 
-void avancer(RobotContour * rc) {
+static inline void avancer(RobotContour * rc) {
 	switch (rc->o) {
 		case NORD:
 			rc->pos.y--;
@@ -69,7 +69,7 @@ void avancer(RobotContour * rc) {
 	}
 }
 
-void nouvelle_orientation(Image I, RobotContour * rc) {
+static inline void nouvelle_orientation(Image I, RobotContour * rc) {
 	Pixel D, G;
 	switch (rc->o) {
 		case NORD:
@@ -101,14 +101,12 @@ Point trouver_pixel_depart(Image I) {
 	Point P = {0, 0};
 
 	for (int i = 0; i < L * H; i++)
-	{
 		if (get_pixel_image(I, i%L + 1, i/L) == BLANC
 			&& get_pixel_image(I, i%L + 1, i/L + 1) == NOIR) {
 			P.x = i % L;
 			P.y = i / L;
 			return P;
 		}
-	}
 
 	return P;
 }
