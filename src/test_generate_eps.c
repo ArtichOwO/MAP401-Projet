@@ -7,9 +7,10 @@ int main(int argc, char *argv[]) {
     bool fill = false;
     char *mode = malloc(8);
     double d = 5;
+    int bezier = 3;
 
-    if (argc < 2 || argc > 4) {
-        fprintf(stderr, "Usage : %s <image>\n", argv[0]);
+    if (argc < 2 || argc > 5) {
+        fprintf(stderr, "Usage : %s <image> [mode [d [bezier:2|3]]]\n", argv[0]);
         return 1;
     }
     
@@ -17,8 +18,12 @@ int main(int argc, char *argv[]) {
         fill = !strcmp(argv[2], "fill");
     }
 
-    if (argc == 4) {
+    if (argc > 3) {
         d = atoi(argv[3]);
+    }
+
+    if (argc > 4) {
+        bezier = atoi(argv[4]);
     }
 
     mode = fill ? "fill" : "stroke";
@@ -28,11 +33,11 @@ int main(int argc, char *argv[]) {
     *strrchr(argv[1], '.') = 0;
     char filename[512];
     strcpy(filename, argv[1]);
-    sprintf(filename, "%s_%s_d%.0lf.eps", argv[1], mode, d);
+    sprintf(filename, "%s_%s_d%.0lf_b%i.eps", argv[1], mode, d, bezier);
 
     FILE *dest = fopen(filename, "w");
 
-    generate_eps(dest, I, fill, d);
+    generate_eps(dest, I, fill, d, bezier);
     fclose(dest);
     
     return 0;

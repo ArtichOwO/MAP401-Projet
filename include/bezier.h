@@ -4,6 +4,11 @@
 #include "geom2d.h"
 #include "liste.h"
 
+typedef enum {
+	B2 = 2,
+	B3 = 3
+} BezierType;
+
 typedef struct {
 	Point C0;
 	Point C1;
