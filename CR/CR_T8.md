@@ -66,3 +66,5 @@
 |Segments|![seg_d1](img_t8/seg_d1.jpg)|![seg_d2](img_t8/seg_d2.jpg)|![seg_d4](img_t8/seg_d4.jpg)|![seg_d8](img_t8/seg_d8.jpg)|
 |Bézier (2)|![b2_d1](img_t8/b2_d1.jpg)|![b2_d2](img_t8/b2_d2.jpg)|![b2_d4](img_t8/b2_d4.jpg)|![b2_d8](img_t8/b2_d8.jpg)|
 |Bézier (3)|![b3_d1](img_t8/b3_d1.jpg)|![b3_d2](img_t8/b3_d2.jpg)|![b3_d4](img_t8/b3_d4.jpg)|![b3_d8](img_t8/b3_d8.jpg)|
+
+La simplification par segments et par bézier de degré 2 se dégradent beaucoup à d = 8, contrairement à la simplification par bézier de degré 3 qui laisse une image encore similaire à l'originale.
