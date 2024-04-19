@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     int bezier = 3;
 
     if (argc < 2 || argc > 5) {
-        fprintf(stderr, "Usage : %s <image> [mode [d [bezier:2|3]]]\n", argv[0]);
+        fprintf(stderr, "Usage : %s <image> [mode [d [bezier:1-3]]]\n", argv[0]);
         return 1;
     }
     
@@ -19,11 +19,15 @@ int main(int argc, char *argv[]) {
     }
 
     if (argc > 3) {
-        d = atoi(argv[3]);
+        d = atof(argv[3]);
     }
 
     if (argc > 4) {
         bezier = atoi(argv[4]);
+        if (bezier < 1 || bezier > 3) {
+            fprintf(stderr, "Bezier degree must be between 1 and 3\n");
+            return 1;
+        }
     }
 
     mode = fill ? "fill" : "stroke";
@@ -33,7 +37,7 @@ int main(int argc, char *argv[]) {
     *strrchr(argv[1], '.') = 0;
     char filename[512];
     strcpy(filename, argv[1]);
-    sprintf(filename, "%s_%s_d%.0lf_b%i.eps", argv[1], mode, d, bezier);
+    sprintf(filename, "%s_%s_d%.1lf_b%i.eps", argv[1], mode, d, bezier);
 
     FILE *dest = fopen(filename, "w");
 

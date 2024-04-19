@@ -5,6 +5,7 @@
 #include "liste.h"
 
 typedef enum {
+	B1 = 1,
 	B2 = 2,
 	B3 = 3
 } BezierType;
