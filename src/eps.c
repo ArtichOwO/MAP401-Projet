@@ -51,16 +51,13 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 	Image masque = creer_masque(I);
 	int L = largeur_image(I);
 	int H = hauteur_image(I);
-	int somme = 0;
 
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
 			Liste contour = trouver_contour(I, masque);
 			contours[nb_contours++] = *douglas_peucker_b3(&contour, d);
-			somme += longueur_liste(contours[nb_contours-1]);
 		}
 	}
-	printf("segments : %i\n", somme+1);
 
 	fprintf(fd, "%%!PS-Adobe-3.0 EPSF-3.0\n"
 		   "%%%%BoundingBox: 0 0 %i %i\n\n"
