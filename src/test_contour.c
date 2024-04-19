@@ -28,8 +28,10 @@ int main(int argc, char * argv[]) {
 	int H = hauteur_image(I);
 
 	for (int i = 0; i < L * H; i++) {
-		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR)
-			listes[nb_contours++] = trouver_contour(I, masque);
+		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
+			Point depart = { i%L, i/L };
+			listes[nb_contours++] = trouver_contour(I, masque, depart);
+		}
 	}
 
 	int somme = 0;

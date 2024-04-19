@@ -113,9 +113,8 @@ Point trouver_pixel_depart(Image I) {
 	return P;
 }
 
-Liste trouver_contour(Image I, Image masque) {
+Liste trouver_contour(Image I, Image masque, Point depart) {
 	Liste L = { NULL };
-	Point depart = trouver_pixel_depart(masque);
 
 	RobotContour rc = {
 		.pos = depart,

@@ -17,7 +17,8 @@ void generate_eps_seg(FILE * fd, Image I, bool fill, double d) {
 
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
-			Liste contour = trouver_contour(I, masque);
+			Point depart = { i%L, i/L };
+			Liste contour = trouver_contour(I, masque, depart);
 			contours[nb_contours++] = *douglas_peucker(&contour, d);
 			somme += longueur_liste(contours[nb_contours-1]);
 		}
@@ -55,7 +56,8 @@ void generate_eps(FILE * fd, Image I, bool fill, double d) {
 
 	for (int i = 0; i < L * H; i++) {
 		if (get_pixel_image(masque, i%L+1, i/L+1) == NOIR) {
-			Liste contour = trouver_contour(I, masque);
+			Point depart = { i%L, i/L };
+			Liste contour = trouver_contour(I, masque, depart);
 			contours[nb_contours++] = *douglas_peucker_b3(&contour, d);
 		}
 	}
