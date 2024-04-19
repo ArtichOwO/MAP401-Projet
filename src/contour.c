@@ -39,24 +39,10 @@ static inline void avancer(RobotContour * rc) {
 }
 
 static inline void nouvelle_orientation(Image I, RobotContour * rc) {
-	Pixel D, G;
-	switch (rc->o) {
-		case NORD:
-			G = get_pixel_image(I, rc->pos.x, rc->pos.y);
-			D = get_pixel_image(I, rc->pos.x+1, rc->pos.y);
-			break;
-		case SUD:
-			G = get_pixel_image(I, rc->pos.x+1, rc->pos.y+1);
-			D = get_pixel_image(I, rc->pos.x, rc->pos.y+1);
-			break;
-		case EST:
-			G = get_pixel_image(I, rc->pos.x+1, rc->pos.y);
-			D = get_pixel_image(I, rc->pos.x+1, rc->pos.y+1);
-			break;
-		case OUEST:
-			G = get_pixel_image(I, rc->pos.x, rc->pos.y+1);
-			D = get_pixel_image(I, rc->pos.x, rc->pos.y);
-	}
+	Pixel G = get_pixel_image(I, rc->pos.x + (rc->o == SUD || rc->o == EST), 
+								 rc->pos.y + (rc->o == SUD || rc->o == OUEST));
+	Pixel D = get_pixel_image(I, rc->pos.x + (rc->o == NORD || rc->o == EST),
+								 rc->pos.y + (rc->o == SUD || rc->o == EST));
 
 	if (G == NOIR)
 		tourner_gauche(rc);
