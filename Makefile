@@ -30,7 +30,7 @@ COMPILOPTS = -g -Wall -Werror $(INCLUDEOPTS)
 
 # liste des exécutables
 EXECUTABLES = test_image test_geom2d test_contour test_generate_eps \
-	test_distance_ps test_bezier test_generate_eps_init
+	test_distance_ps test_bezier test_generate_eps_seg
 
 #############################################################################
 # définition des règles
@@ -74,7 +74,7 @@ $(SRCDIR)/test_contour.o: $(SRCDIR)/test_contour.c $(INCDIR)/image.h $(INCDIR)/c
 $(SRCDIR)/test_generate_eps.o: $(SRCDIR)/test_generate_eps.c \
 	$(INCDIR)/image.h
 
-$(SRCDIR)/test_generate_eps_init.o: $(SRCDIR)/test_generate_eps_init.c \
+$(SRCDIR)/test_generate_eps_seg.o: $(SRCDIR)/test_generate_eps_seg.c \
 	$(INCDIR)/image.h 
 
 $(SRCDIR)/liste.o: $(SRCDIR)/liste.c $(INCDIR)/liste.h $(INCDIR)/geom2d.h
@@ -108,7 +108,7 @@ test_generate_eps: $(SRCDIR)/test_generate_eps.o $(SRCDIR)/image.o $(SRCDIR)/eps
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o \
 	$(SRCDIR)/simplification.o $(SRCDIR)/bezier.o
 
-test_generate_eps_init: $(SRCDIR)/test_generate_eps_init.o $(SRCDIR)/image.o $(SRCDIR)/eps.o \
+test_generate_eps_seg: $(SRCDIR)/test_generate_eps_seg.o $(SRCDIR)/image.o $(SRCDIR)/eps.o \
 	$(SRCDIR)/geom2d.o $(SRCDIR)/contour.o $(SRCDIR)/liste.o $(SRCDIR)/masque.o \
 	$(SRCDIR)/simplification.o $(SRCDIR)/bezier.o
 
