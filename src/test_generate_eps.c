@@ -21,22 +21,14 @@ int main(int argc, char *argv[]) {
         d = atoi(argv[3]);
     }
 
-    if (fill) {
-        mode = "_fill";
-    }
-    else {
-        mode = "_stroke";
-    }
+    mode = fill ? "fill" : "stroke";
 
     Image I = lire_fichier_image(argv[1]);
 
-    // gen filename
-    char *ext = ".eps";
     *strrchr(argv[1], '.') = 0;
-    char *filename = malloc(strlen(argv[1]) + strlen(ext));
+    char filename[512];
     strcpy(filename, argv[1]);
-
-    filename = strcat(strcat(strcat(argv[1], mode), argv[3]), ext);
+    sprintf(filename, "%s_%s_d%.0lf.eps", argv[1], mode, d);
 
     FILE *dest = fopen(filename, "w");
 
